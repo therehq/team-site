@@ -9,7 +9,7 @@ import { There } from './vectors/logos/There'
 export const Nav = () => (
   <StyledWrapper>
     <There />
-    <NextLink>
+    <NextLink href="#">
       <RequestButton href="#">Request Access</RequestButton>
     </NextLink>
   </StyledWrapper>
