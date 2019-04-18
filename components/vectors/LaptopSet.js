@@ -64,8 +64,9 @@ const DesktopAppImage = styled.div`
 
   background-image: url('../static/Home.jpg');
   background-size: cover;
-  border-radius: 3px;
-  box-shadow: 0 0 2px #333;
+  border-radius: 4px;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.13),
+    0px 0px 12px rgba(0, 0, 0, 0.14);
 
   position: absolute;
   z-index: 11;
