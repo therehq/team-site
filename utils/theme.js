@@ -16,6 +16,7 @@ export const styledTheme = {
   fontMedium14: 14,
   fontMedium15: 15,
   fontMedium18: 18,
+  fontLarge21: 21,
   fontSuperLarge42: 42
 
   // Z-Indexes
