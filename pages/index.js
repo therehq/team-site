@@ -1,7 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+
 import { Header } from '../components/Header'
 import { OurCustomers } from '../components/OurCustomers/OurCustomers'
+import { Screenshots } from '../components/screenshots/Screenshots'
+import { Scheduling } from '../components/scheduling/Scheduling'
 import Space from '../components/shared/Space'
 
 function Home() {
@@ -9,6 +11,8 @@ function Home() {
     <>
       <Header />
       <OurCustomers />
+      <Screenshots />
+      <Scheduling />
       <Space height={100} />
     </>
   )
