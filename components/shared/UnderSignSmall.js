@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 import { SectionHeading } from './SectionHeading'
 
-export const UnderSignSVG = props => (
-  <svg width={325} height={190} fill="none" {...props}>
+const UnderSignSmallSVG = props => (
+  <svg width={179} height={100} fill="none" {...props}>
     <path
-      d="M2 95c63.23-3.764 218.07-9.626 320.773-.073 1.994 2.651-19.498.134-14.395 4.644"
+      d="M2 46.491c81.715-1.85 125.955-3.862 174.564 6.23 1.128 1.371-2.817 2.006-3.564 1.77"
       stroke="#3CA3EB"
       strokeWidth={3}
       strokeLinecap="round"
@@ -15,11 +15,11 @@ export const UnderSignSVG = props => (
   </svg>
 )
 
-export const UnderSign = props => (
+export const UnderSignSmall = props => (
   <Wrapper>
     <SectionHeading>{props.children}</SectionHeading>
     <SignWrapper>
-      <UnderSignSVG />
+      <UnderSignSmallSVG />
     </SignWrapper>
   </Wrapper>
 )
@@ -33,5 +33,5 @@ const Wrapper = styled.div`
 
 const SignWrapper = styled.div`
   position: absolute;
-  top: -43px;
+  top: 0;
 `
