@@ -33,6 +33,9 @@ class MyApp extends App {
 export default MyApp
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: content-box;
+  }
   body {
     background-color: #FEFEFE;
     padding: 0;
