@@ -1,8 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Square, Triangle, MultiCircles, HalfCircle } from './Shapes'
 import { Laptop } from './Laptop'
+import { mobile } from '../style/mobile'
 
 export const LaptopSet = () => (
   <Wrapper>
@@ -20,8 +21,8 @@ export const LaptopSet = () => (
     </ShapeWrap>
 
     <LaptopWrapper>
-      <DesktopAppImage />
       <Laptop />
+      <DesktopAppImage />
     </LaptopWrapper>
   </Wrapper>
 )
@@ -34,6 +35,10 @@ const ShapeWrap = styled.div`
   position: absolute;
   top: ${p => (p.top ? p.top : 0)}px;
   right: ${p => (p.right ? p.right : 0)}px;
+
+  ${mobile(css`
+    display: none;
+  `)};
 
   animation-name: spin;
   animation-duration: 20s;
@@ -53,14 +58,30 @@ const ShapeWrap = styled.div`
 const LaptopWrapper = styled.div`
   position: relative;
   z-index: 10;
+  width: 713px;
+  transition: all 200ms;
+
+  ${mobile(css`
+    width: 500px;
+  `)};
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const DesktopAppImage = styled.div`
-  width: 330px;
-  height: 170px;
-
+  /* width: 330px;
+  height: 170px; 
   top: 118px;
-  left: 191px;
+  left: 191px; */
+  width: 46.2%;
+  height: 41.8%;
+  top: 27%;
+  left: 27%;
+
+  transition: all 200ms;
 
   background-image: url('../static/Home.jpg');
   background-size: cover;
