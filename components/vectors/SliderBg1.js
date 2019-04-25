@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const SliderBg1 = props => (
-  <svg width={761} height={471} fill="none" {...props}>
+  <svg width="1em" height="1em" viewBox="0 0 761 471" fill="none" {...props}>
     <path
       d="M611.114 104.365C451.611-18.818 23.708 31.27 5.604 149.855c-51.5 337.343 264.005 287.252 451.508 314.853 321.004 47.253 331.004-234.096 154.002-360.343z"
       fill="#D8FFF8"
