@@ -34,7 +34,7 @@ export default MyApp
 
 const GlobalStyle = createGlobalStyle`
   * {
-    box-sizing: content-box;
+    box-sizing: border-box;
   }
   body {
     background-color: #FEFEFE;
