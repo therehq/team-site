@@ -10,6 +10,7 @@ import { Schedule } from '../vectors/icons/Schedule'
 import { Teammates } from '../vectors/icons/Teammates'
 import { TimePlaces } from '../vectors/icons/TimePlaces'
 import { SliderBg1 } from '../vectors/SliderBg1'
+import { mobile } from '../style/mobile'
 
 export const Screenshots = () => (
   <NarrowContainer>
@@ -54,7 +55,9 @@ export const Screenshots = () => (
         <Slides>
           <SlideItem>
             <DesktopAppImage />
-            <SliderBg1 />
+            <BgWrapper>
+              <SliderBg1 />
+            </BgWrapper>
           </SlideItem>
         </Slides>
       </SliderWrapper>
@@ -73,6 +76,10 @@ const SliderWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  ${mobile(css`
+    flex-direction: column;
+  `)}
 `
 
 const SideNav = styled.div`
@@ -157,6 +164,13 @@ const DesktopAppImage = styled.div`
     0px 0px 12px rgba(0, 0, 0, 0.15);
 
   position: absolute;
+`
+
+const BgWrapper = styled.div`
+  svg {
+    width: 741px;
+    height: 471px;
+  }
 `
 
 const SlideItem = styled.div`
