@@ -1,9 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { mobile } from '../style/mobile'
 
 export const Container = styled.div`
   width: 100%;
   overflow: hidden;
+
+  /* ${mobile(css`
+    max-width: 500px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: content-box;
+  `)}; */
 `
 
 export const Wrapper = styled.div`
