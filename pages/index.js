@@ -7,7 +7,10 @@ import { Scheduling } from '../components/scheduling/Scheduling'
 import { Features } from '../components/Features'
 import { PeopleAvatars } from '../components/PeopleAvatars'
 import { Quotes } from '../components/Quotes'
+import { TeamStory } from '../components/TeamStory'
+import { Features2 } from '../components/Features2'
 import Space from '../components/shared/Space'
+import { Press } from '../components/Press'
 
 function Home() {
   return (
@@ -19,6 +22,10 @@ function Home() {
       <Features />
       <PeopleAvatars />
       <Quotes />
+      <TeamStory />
+      <Features2 />
+      <Press />
+
       <Space height={100} />
     </>
   )
