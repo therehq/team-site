@@ -45,4 +45,10 @@ const GlobalStyle = createGlobalStyle`
   a{
     text-decoration: none;
   }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    *{
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
 `
