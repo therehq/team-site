@@ -126,9 +126,9 @@ const Item = styled.div`
 `
 
 const ItemsText = styled.div`
-  font-family: 'IBM Plex Sans';
-  font-size: 18px;
-  line-height: 25px;
+  font-family: ${p => p.theme.fontText};
+  font-size: ${p => p.theme.fontMedium18}px;
+  line-height: 1.38;
   font-style: normal;
   font-weight: normal;
   letter-spacing: -0.01em;
