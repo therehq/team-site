@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Space from '../components/shared/Space'
 import { Header } from '../components/Header'
 import { OurCustomers } from '../components/OurCustomers/OurCustomers'
 import { Screenshots } from '../components/screenshots/Screenshots'
@@ -9,8 +10,10 @@ import { PeopleAvatars } from '../components/PeopleAvatars'
 import { Quotes } from '../components/Quotes'
 import { TeamStory } from '../components/TeamStory'
 import { Features2 } from '../components/Features2'
-import Space from '../components/shared/Space'
 import { Press } from '../components/Press'
+import { OurBlog } from '../components/OurBlog'
+import { LastQuote } from '../components/LastQuote'
+import { Footer } from '../components/footer'
 
 function Home() {
   return (
@@ -25,8 +28,11 @@ function Home() {
       <TeamStory />
       <Features2 />
       <Press />
+      <OurBlog />
+      <LastQuote />
+      <Footer />
 
-      <Space height={100} />
+      <Space height={30} />
     </>
   )
 }
