@@ -1,5 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { mobile } from './style/mobile'
 import Twitter from './vectors/share/Twitter'
 import Copy from './vectors/share/Copy'
 
@@ -23,6 +25,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${mobile(css`
+    flex-direction: column;
+    justify-content: flex-start;
+  `)};
 `
 
 const ShareItem = styled.div`
@@ -40,12 +47,18 @@ const ShareItem = styled.div`
   color: #6d7786;
   cursor: pointer;
 
+  ${mobile(css`
+    margin-left: 0;
+    margin-top: 25px;
+  `)};
+
   :hover {
     color: #6a7786;
   }
 
   :first-child {
     margin-left: 0;
+    margin-top: 0;
   }
 
   span {
