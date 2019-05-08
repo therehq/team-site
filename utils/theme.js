@@ -17,6 +17,8 @@ export const styledTheme = {
   fontMedium15: 15,
   fontMedium18: 18,
   fontLarge21: 21,
+  fontLarge24: 24,
+  fontLarge30: 30,
   fontLarge32: 32,
   fontSuperLarge42: 42
 
