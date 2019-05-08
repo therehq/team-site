@@ -49,11 +49,11 @@ const StyledWrapper = styled(Wrapper)``
 const Title = styled.h2`
   margin: 0;
 
-  font-family: 'IBM Plex Sans';
+  font-family: ${p => p.theme.fontText};
+  font-size: ${p => p.theme.fontLarge21}px;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
-  line-height: 27px;
+  line-height: 1.28;
   text-align: center;
 
   color: #282d30;
