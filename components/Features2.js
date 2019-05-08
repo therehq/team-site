@@ -117,6 +117,13 @@ const ItemsWrapper = styled.div`
   grid-template-rows: auto auto;
   grid-column-gap: 50px;
   grid-row-gap: 23px;
+
+  ${mobile(css`
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-column-gap: 50px;
+    grid-row-gap: 23px;
+  `)}
 `
 
 const Item = styled.div`

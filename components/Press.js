@@ -65,6 +65,10 @@ const PressWrapper = styled.div`
   align-items: center;
 
   margin-top: 33px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const PressItem = styled.a`
@@ -78,5 +82,10 @@ const PressItem = styled.a`
 
   :first-child {
     margin-left: 0;
+  }
+
+  @media (max-width: 800px) {
+    margin-left: 0;
+    margin-top: 20px;
   }
 `

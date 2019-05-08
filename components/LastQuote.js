@@ -18,7 +18,6 @@ export const LastQuote = () => (
         <div>
           <Space height={11} />
           <Quote>
-            {/* <Q>“</Q> */}
             If you work on a distributed team, you owe it to yourself to check
             out There.
           </Quote>
@@ -71,6 +70,13 @@ const LargeQuote = styled.div`
   grid-template-columns: 250px auto;
   grid-column-gap: 36px;
   align-items: center;
+
+  @media (max-width: 700px) {
+    grid-template-columns: auto;
+    grid-column-gap: 0;
+    align-content: center;
+    justify-content: center;
+  }
 `
 
 const Quote = styled.div`

@@ -54,9 +54,13 @@ export const Screenshots = () => (
         </SideNav>
         <Slides>
           <SlideItem>
-            <DesktopAppImage />
             <BgWrapper>
-              <SliderBg1 />
+              <DesktopAppImage>
+                <img
+                  src="../static/Home.jpg"
+                  srcset="../static/Home@2x.jpg 2x"
+                />
+              </DesktopAppImage>
             </BgWrapper>
           </SlideItem>
         </Slides>
@@ -74,6 +78,7 @@ const StyledWrapper = styled(Wrapper)`
 
 const SliderWrapper = styled.div`
   width: 100%;
+  min-height: 470px;
   display: flex;
   justify-content: space-between;
 
@@ -126,6 +131,8 @@ const Title = styled.div`
 
 const Slides = styled.div`
   flex-grow: 1;
+  display: grid;
+  justify-items: stretch;
 `
 
 const NavItemData = styled.div`
@@ -148,32 +155,30 @@ const NavItemSubtitle = styled.span`
 `
 
 const DesktopAppImage = styled.div`
-  width: 668px;
-  height: 334px;
-
-  left: 50%;
-  margin-left: -343px;
-  top: 50%;
-  margin-top: -167px;
-
-  background-image: url('../static/Home@2x.jpg');
+  max-width: 668px;
+  max-height: 334px;
   background-size: cover;
   border-radius: 4px;
-
   box-shadow: 0px 16px 19px rgba(0, 0, 0, 0.09),
     0px 0px 12px rgba(0, 0, 0, 0.15);
 
-  position: absolute;
+  img {
+    width: 100%;
+    display: block;
+  }
 `
 
 const BgWrapper = styled.div`
-  svg {
-    width: 741px;
-    height: 471px;
-  }
+  max-width: 760px;
+  width: 100%;
+  height: 100%;
+  background: url('../../static/bgSlider.svg') no-repeat;
+  background-size: 100% auto;
+
+  padding: 10% 30px 30px 30px;
 `
 
 const SlideItem = styled.div`
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 `

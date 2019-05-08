@@ -1,7 +1,7 @@
 export const styledTheme = {
   //sizes
   containerNarrowWidth: 1200,
-  sideSpace: 10,
+  sideSpace: 35,
   // Colors
   black: 'black',
   black1: '#212121',
