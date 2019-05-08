@@ -6,12 +6,10 @@ export const Container = styled.div`
   width: 100%;
   overflow: hidden;
 
-  /* ${mobile(css`
-    max-width: 500px;
-    padding-left: 30px;
-    padding-right: 30px;
-    box-sizing: content-box;
-  `)}; */
+  ${mobile(css`
+    padding-left: ${p => p.theme.sideSpace}px;
+    padding-right: ${p => p.theme.sideSpace}px;
+  `)};
 `
 
 export const Wrapper = styled.div`
