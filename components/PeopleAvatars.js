@@ -61,10 +61,10 @@ const Avatars = styled.div`
   `)}
 
   > * {
-    transition: all 200ms;
+    transition: all 180ms ease-in-out;
 
     :hover {
-      transform: scale(1.2, 1.2);
+      transform: scale(1.1, 1.1);
     }
   }
 `
