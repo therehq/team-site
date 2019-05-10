@@ -58,7 +58,7 @@ export const Screenshots = () => (
               <DesktopAppImage>
                 <img
                   src="../static/Home.jpg"
-                  srcset="../static/Home@2x.jpg 2x"
+                  srcSet="../static/Home@2x.jpg 2x"
                 />
               </DesktopAppImage>
             </BgWrapper>
