@@ -1,5 +1,7 @@
 import React from 'react'
+import { createClient, Provider } from 'urql'
 
+import { ModalProvider } from '../components/modal/Context'
 import Space from '../components/shared/Space'
 import { Header } from '../components/Header'
 import { OurCustomers } from '../components/OurCustomers/OurCustomers'
@@ -15,26 +17,45 @@ import { OurBlog } from '../components/OurBlog'
 import { LastQuote } from '../components/LastQuote'
 import { Footer } from '../components/footer'
 
-function Home() {
-  return (
-    <>
-      <Header />
-      <OurCustomers />
-      <Screenshots />
-      <Scheduling />
-      <Features />
-      <PeopleAvatars />
-      <Quotes />
-      <TeamStory />
-      <Features2 />
-      <Press />
-      <OurBlog />
-      <LastQuote />
-      <Footer />
+console.log(process.env.NODE_ENV)
 
-      <Space height={30} />
-    </>
+const client = createClient({
+  url:
+    process.env.NODE_ENV == 'production'
+      ? 'https://subscribers.morajabi.now.sh/graphql'
+      : 'http://localhost:3001/graphql'
+})
+
+const Home = () => {
+  return (
+    <Provider value={client}>
+      <ModalProvider>
+        <Header />
+        <OurCustomers />
+        <Screenshots />
+        <Scheduling />
+        <Features />
+        <PeopleAvatars />
+        <Quotes />
+        <TeamStory />
+        <Features2 />
+        <Press />
+        <OurBlog />
+        <LastQuote />
+        <Footer />
+
+        <Space height={30} />
+      </ModalProvider>
+    </Provider>
   )
 }
+
+// function Home() {
+//   return (
+//     <>
+
+//     </>
+//   )
+// }
 
 export default Home
