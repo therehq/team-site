@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
-export const RequestAccess = () => (
-  <Wrapper>
-    <InputBox type="text" name="email" placeholder="Your email" />
-    <RequestButton>Request Access</RequestButton>
-  </Wrapper>
-)
+// local
+import { ModalContext } from '../modal/Context'
+import { RequestAccessForm } from '../modal'
+
+export const RequestAccess = () => {
+  const { isOpen, setOpenState } = useContext(ModalContext)
+
+  return (
+    <Wrapper>
+      <InputBox type="text" name="email" placeholder="Your email" />
+      <RequestButton onClick={() => setOpenState(true)}>
+        Request Access
+      </RequestButton>
+    </Wrapper>
+  )
+}
 
 const Wrapper = styled.div`
   width: 355px;
