@@ -33,5 +33,5 @@ const Wrapper = styled.div`
 
 const SignWrapper = styled.div`
   position: absolute;
-  top: -43px;
+  top: -45px;
 `
