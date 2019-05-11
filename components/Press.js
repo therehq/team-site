@@ -28,15 +28,15 @@ export const Press = () => (
           <GoldenKitty />{' '}
         </PressItem>
 
-        <PressItem href="#">
+        <PressItem href="#" noLink>
           <Tnw />{' '}
         </PressItem>
 
-        <PressItem href="#">
+        <PressItem href="#" noLink>
           <CssTricks />{' '}
         </PressItem>
 
-        <PressItem href="#">
+        <PressItem href="#" noLink>
           <DailyTeck />{' '}
         </PressItem>
       </PressWrapper>
@@ -75,7 +75,7 @@ const PressItem = styled.a`
   margin-left: 53px;
   opacity: 0.5;
   transition: all 300ms;
-
+  cursor: ${p => (p.noLink ? 'none' : 'pointer')};
   :hover {
     opacity: 1;
   }
