@@ -50,27 +50,19 @@ export class Quotes extends Component {
           />
 
           <QuoteBoxMedium
-            title="BOX 4"
-            quote="This is a game changer for remote teams & clients."
-            image="../static/avatars/3.jpg"
-            name="Sam"
-            status="Product Manager at Handsome"
+            title="Super easy"
+            quote="In love with There — makes handling multiple timezones super easy!"
+            image="../static/avatars/AndrewHyde.jpg"
+            name="Andrew Hyde"
+            status="Founder at Portl"
           />
 
           <QuoteBoxMedium
-            title="Box 5"
-            quote="This is a game changer for remote teams & clients."
-            image="../static/avatars/3.jpg"
-            name="Sam"
-            status="Product Manager at Handsome"
-          />
-
-          <QuoteBoxMedium
-            title="Box 6"
-            quote="This is a game changer for remote teams & clients."
-            image="../static/avatars/3.jpg"
-            name="Sam"
-            status="Product Manager at Handsome"
+            title="You owe it"
+            quote="If you work on a distributed team, you owe it to yourself to check out There."
+            image="../static/avatars/ChrisMessina.jpg"
+            name="Chris Messina"
+            status=""
           />
         </QuotesSlider>
         <Next onClick={this.nextHandler} />
@@ -151,7 +143,7 @@ const Prev = styled.div`
   transition: all 200ms;
 
   :hover {
-    transform: translateX(-5px);
+    transform: translateX(-2px);
   }
 `
 
@@ -162,6 +154,6 @@ const Next = styled.div`
   transition: all 200ms;
 
   :hover {
-    transform: translateX(5px);
+    transform: translateX(2px);
   }
 `
