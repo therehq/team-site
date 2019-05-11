@@ -6,11 +6,16 @@ import { ModalContext } from '../modal/Context'
 import { RequestAccessForm } from '../modal'
 
 export const RequestAccess = () => {
-  const { isOpen, setOpenState } = useContext(ModalContext)
+  const { isOpen, setOpenState, setEmailState } = useContext(ModalContext)
 
   return (
     <Wrapper>
-      <InputBox type="text" name="email" placeholder="Your email" />
+      <InputBox
+        type="text"
+        name="email"
+        placeholder="Your email"
+        onChange={e => setEmailState(e.target.value)}
+      />
       <RequestButton onClick={() => setOpenState(true)}>
         Request Access
       </RequestButton>
@@ -52,8 +57,8 @@ const RequestButton = styled.button`
   transition: 200ms;
 
   :hover {
-    padding: 0px 15px 0 15px;
-    background: #aa84ff;
+    padding: 0px 10px 0 15px;
+    background: #0071f7;
   }
 `
 
