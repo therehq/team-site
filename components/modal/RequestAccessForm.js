@@ -6,82 +6,84 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 
 import Space from '../shared/Space'
 
-export const RequestAccessForm = withRouter(({ setOpenState, router }) => {
-  const [mutation, executeMutation] = useMutation(AddSubscriber)
-  const addSubscriberHandler = async ({ fullName, company, email }) => {
-    // setOpenState(false)
-    const res = await executeMutation({
-      fullName: fullName,
-      company: company,
-      email: email,
-      utmSource: router.query.utm_source,
-      utmMedium: router.query.utm_medium,
-      utmCampaign: router.query.utm_campaign
-    })
+export const RequestAccessForm = withRouter(
+  ({ setOpenState, setEmailState, defaultEmail, router }) => {
+    const [mutation, executeMutation] = useMutation(AddSubscriber)
+    const addSubscriberHandler = async ({ fullName, company, email }) => {
+      // setOpenState(false)
+      const res = await executeMutation({
+        fullName: fullName,
+        company: company,
+        email: email,
+        utmSource: router.query.utm_source,
+        utmMedium: router.query.utm_medium,
+        utmCampaign: router.query.utm_campaign
+      })
 
-    return res
+      return res
+    }
+
+    return (
+      <div>
+        <Title>Reserve your spot.</Title>
+        <Subtitle>No marketing or sales emails spam, ever.</Subtitle>
+
+        <Space height={53} />
+        <Formik
+          initialValues={{
+            fullName: '',
+            company: '',
+            email: defaultEmail
+          }}
+          onSubmit={async (values, { props, setSubmitting, setErrors }) => {
+            const result = await addSubscriberHandler(values)
+            setSubmitting(false)
+
+            if (result.error) {
+              setErrors({ email: result.error.message })
+            } else {
+              // successful
+            }
+          }}
+          render={({ errors, touched }) => (
+            <Form>
+              <Row>
+                <InputTitle>Your name</InputTitle>
+                <Input
+                  type="text"
+                  name="fullName"
+                  placeholder="Type your full name here"
+                />
+              </Row>
+              <Row>
+                <InputTitle>Your team name</InputTitle>
+                <Input
+                  type="text"
+                  name="company"
+                  placeholder="Type your company name here"
+                />
+              </Row>
+              <Row>
+                <InputTitle>Your work email</InputTitle>
+                <Input
+                  type="text"
+                  name="email"
+                  placeholder="Type your email here"
+                />
+              </Row>
+              {errors.email && (
+                <Error>{errors.email.replace('[GraphQL]', '')}</Error>
+              )}
+              <Space height={20} />
+
+              <Button type="submit">Request Access</Button>
+            </Form>
+          )}
+        />
+      </div>
+    )
   }
-
-  return (
-    <div>
-      <Title>Reserve your spot.</Title>
-      <Subtitle>No marketing or sales emails spam, ever.</Subtitle>
-
-      <Space height={53} />
-      <Formik
-        initialValues={{
-          fullName: '',
-          company: '',
-          email: ''
-        }}
-        onSubmit={async (values, { props, setSubmitting, setErrors }) => {
-          const result = await addSubscriberHandler(values)
-          setSubmitting(false)
-
-          if (result.error) {
-            setErrors({ email: result.error.message })
-          } else {
-            // successful
-          }
-        }}
-        render={({ errors, touched }) => (
-          <Form>
-            <Row>
-              <InputTitle>Your name</InputTitle>
-              <Input
-                type="text"
-                name="fullName"
-                placeholder="Type your full name here"
-              />
-            </Row>
-            <Row>
-              <InputTitle>Your team name</InputTitle>
-              <Input
-                type="text"
-                name="company"
-                placeholder="Type your company name here"
-              />
-            </Row>
-            <Row>
-              <InputTitle>Your work email</InputTitle>
-              <Input
-                type="text"
-                name="email"
-                placeholder="Type your email here"
-              />
-            </Row>
-            {errors.email && (
-              <Error>{errors.email.replace('[GraphQL]', '')}</Error>
-            )}
-            <Space height={20} />
-
-            <Button type="submit">Request Access</Button>
-          </Form>
-        )}
-      />
-    </div>
-  )
-})
+)
 
 const AddSubscriber = `
 mutation(
