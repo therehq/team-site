@@ -5,11 +5,20 @@ import { RequestAccessForm } from './RequestAccessForm'
 
 import '@reach/dialog/styles.css'
 
-export const Modal = ({ isOpen, setOpenState }) => (
+export const Modal = ({
+  isOpen,
+  setOpenState,
+  defaultEmail,
+  setEmailState
+}) => (
   <StyledDialogOverlay isOpen={isOpen} onDismiss={() => setOpenState(false)}>
     <StyledDialog>
       <div>
-        <RequestAccessForm setOpenState={setOpenState} />
+        <RequestAccessForm
+          setOpenState={setOpenState}
+          defaultEmail={defaultEmail}
+          setEmailState={setEmailState}
+        />
       </div>
     </StyledDialog>
   </StyledDialogOverlay>
