@@ -58,10 +58,12 @@ export const Footer = () => (
       </Column>
       <Column>
         <ColTitle>1 Minute Video</ColTitle>
-        <VideoThumbnail />
-        <SignWrapper>
-          <OurSign />
-        </SignWrapper>
+        <VideoWrapper>
+          <VideoThumbnail />
+          <SignWrapper>
+            <OurSign />
+          </SignWrapper>
+        </VideoWrapper>
       </Column>
       <Column>
         <ColTitle>Team</ColTitle>
@@ -104,7 +106,7 @@ const ColTitle = styled.h2`
   margin: 0;
   margin-bottom: 18px;
 
-  font-family: ${p => p.theme.fontText};
+  font-family: ${p => p.theme.fontTitle};
   font-size: ${p => p.theme.fontLarge30}px;
   font-style: normal;
   font-weight: 800;
@@ -141,10 +143,17 @@ const VideoThumbnail = styled.div`
   background-size: cover;
 
   border-radius: 3px;
+  /* border: 1px solid #11c870; */
   box-shadow: 3px 3px 10px 0 #ddd;
   filter: saturate(0);
   transition: all 200ms;
   cursor: pointer;
+
+  border-color: #490b5f;
+  border-left: solid 2px;
+  border-top: solid 2px;
+  border-bottom: solid 4px;
+  border-right: solid 4px;
 
   :hover {
     filter: saturate(1);
@@ -152,5 +161,14 @@ const VideoThumbnail = styled.div`
 `
 
 const SignWrapper = styled.div`
-  margin-top: -20px;
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  z-index: 15;
+
+  pointer-events: none;
+`
+
+const VideoWrapper = styled.div`
+  position: relative;
 `
