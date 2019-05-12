@@ -16,6 +16,7 @@ import { Press } from '../components/Press'
 import { OurBlog } from '../components/OurBlog'
 import { LastQuote } from '../components/LastQuote'
 import { Footer } from '../components/footer'
+import { ThereNews } from '../components/ThereNews'
 
 console.log(process.env.NODE_ENV)
 
@@ -30,6 +31,7 @@ const Home = () => {
   return (
     <Provider value={client}>
       <ModalProvider>
+        <ThereNews />
         <Header />
         <OurCustomers />
         <Screenshots />
