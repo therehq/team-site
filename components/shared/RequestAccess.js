@@ -57,7 +57,6 @@ const RequestButton = styled.button`
   transition: 200ms;
 
   :hover {
-    padding: 0px 10px 0 15px;
     background: #0071f7;
   }
 `
