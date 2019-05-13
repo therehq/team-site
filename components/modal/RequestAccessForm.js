@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
-import { useQuery, useMutation } from 'urql'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { useMutation } from 'urql'
+import { Formik, Field, Form } from 'formik'
 
+import { ModalContext } from '../modal/Context'
 import Space from '../shared/Space'
 
 export const RequestAccessForm = withRouter(
   ({ setOpenState, setEmailState, defaultEmail, router }) => {
+    const { subscribed, setSubscribedState } = useContext(ModalContext)
     const [mutation, executeMutation] = useMutation(AddSubscriber)
     const addSubscriberHandler = async ({ fullName, company, email }) => {
-      // setOpenState(false)
+      setSubscribedState(true)
       const res = await executeMutation({
         fullName: fullName,
         company: company,
@@ -22,64 +24,96 @@ export const RequestAccessForm = withRouter(
 
       return res
     }
-
+    // const isSubmitted = true
     return (
       <div>
-        <Title>Reserve your spot.</Title>
-        <Subtitle>No marketing or sales emails spam, ever.</Subtitle>
+        {subscribed ? (
+          <>
+            <Title>Reserve your spot.</Title>
+            <Subtitle>No marketing or sales emails spam, ever.</Subtitle>
+            <Space height={53} />
+            <Formik
+              initialValues={{
+                fullName: '',
+                company: '',
+                email: defaultEmail
+              }}
+              onSubmit={async (values, { props, setSubmitting, setErrors }) => {
+                const result = await addSubscriberHandler(values)
+                setSubmitting(false)
 
-        <Space height={53} />
-        <Formik
-          initialValues={{
-            fullName: '',
-            company: '',
-            email: defaultEmail
-          }}
-          onSubmit={async (values, { props, setSubmitting, setErrors }) => {
-            const result = await addSubscriberHandler(values)
-            setSubmitting(false)
+                if (result.error) {
+                  setErrors({ email: result.error.message })
+                } else {
+                  // successful
+                }
+              }}
+              render={({ errors, touched, isSubmitting }) => (
+                <Form>
+                  <Row>
+                    <InputTitle>Your name</InputTitle>
+                    <Input
+                      type="text"
+                      name="fullName"
+                      placeholder="Type your full name here"
+                    />
+                  </Row>
+                  <Row>
+                    <InputTitle>Your team name</InputTitle>
+                    <Input
+                      type="text"
+                      name="company"
+                      placeholder="Type your company name here"
+                    />
+                  </Row>
+                  <Row>
+                    <InputTitle>Your work email</InputTitle>
+                    <Input
+                      type="text"
+                      name="email"
+                      placeholder="Type your email here"
+                    />
+                  </Row>
+                  {errors.email && (
+                    <Error>{errors.email.replace('[GraphQL]', '')}</Error>
+                  )}
+                  <Space height={20} />
 
-            if (result.error) {
-              setErrors({ email: result.error.message })
-            } else {
-              // successful
-            }
-          }}
-          render={({ errors, touched }) => (
-            <Form>
-              <Row>
-                <InputTitle>Your name</InputTitle>
-                <Input
-                  type="text"
-                  name="fullName"
-                  placeholder="Type your full name here"
-                />
-              </Row>
-              <Row>
-                <InputTitle>Your team name</InputTitle>
-                <Input
-                  type="text"
-                  name="company"
-                  placeholder="Type your company name here"
-                />
-              </Row>
-              <Row>
-                <InputTitle>Your work email</InputTitle>
-                <Input
-                  type="text"
-                  name="email"
-                  placeholder="Type your email here"
-                />
-              </Row>
-              {errors.email && (
-                <Error>{errors.email.replace('[GraphQL]', '')}</Error>
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Adding...' : 'Request Access'}
+                  </Button>
+                </Form>
               )}
-              <Space height={20} />
+            />
+          </>
+        ) : (
+          <MessageWrapper>
+            <Space height={15} />
 
-              <Button type="submit">Request Access</Button>
-            </Form>
-          )}
-        />
+            <Title align="center">You’re on the waitlist! 🎉</Title>
+            <Subtitle align="center">
+              No marketing or sales emails spam, ever.
+            </Subtitle>
+            <Space height={20} />
+
+            <Center>
+              <CloseButton onClick={() => setOpenState(false)}>
+                Close
+              </CloseButton>
+              <Button
+                onClick={() =>
+                  window.open(
+                    'https://twitter.com/intent/tweet?url=https%3A%2F%2Fthere.team&text=I%27m%20on%20the%20waitlist%20of%20@ThereHQ.%20It%27s%20for%20remote%20teams%21%20',
+                    'Twitter',
+                    'width=600,height=300'
+                  )
+                }
+              >
+                Tweet!
+              </Button>
+            </Center>
+          </MessageWrapper>
+        )}
       </div>
     )
   }
@@ -113,16 +147,20 @@ const Title = styled.h2`
   font-weight: 800;
   font-size: 28px;
   line-height: 1.21;
+  text-align: ${p => (p.align ? p.align : 'left')};
 
   color: #000000;
 `
 
 const Subtitle = styled.span`
+  display: block;
   font-family: ${p => p.theme.fontText};
   font-size: 16px;
   font-style: normal;
   font-weight: normal;
   line-height: 1.31;
+
+  text-align: ${p => (p.align ? p.align : 'left')};
 
   color: #a8a8a8;
 `
@@ -174,7 +212,8 @@ const Button = styled.button`
   display: block;
   margin: auto;
   border: none;
-  width: 150px;
+  width: auto;
+  padding: 10px 17px;
   height: 40px;
 
   background: #438af4;
@@ -189,6 +228,10 @@ const Button = styled.button`
 
   color: #ffffff;
   cursor: pointer;
+
+  outline: none;
+  :hover {
+  }
 `
 
 const Error = styled.div`
@@ -200,6 +243,36 @@ const Error = styled.div`
 
   color: #999;
 `
+const MessageWrapper = styled.div``
+
+const CloseButton = styled.a`
+  padding: 10px;
+  font-family: ${p => p.theme.fontText};
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.31;
+
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
+`
+
+const Center = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > button {
+    margin: 0;
+    margin-left: 10px;
+  }
+`
+
 /*
   send data to 
 https://github.com/morajabi/there/blob/add/homepage/lambdas/subscribers/index.js
