@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
 
 // Locals
@@ -12,68 +12,80 @@ import Dribbble from '../../static/footer/dribbble.svg'
 import Github from '../../static/footer/github.svg'
 import Twitter from '../../static/footer/twitter.svg'
 import OurSign from '../../static/footer/OurSign.svg'
+import { ModalContext } from '../modal/Context'
 
-export const Footer = () => (
-  <NarrowContainer>
-    <Space height={172} />
-    <StyledWrapper>
-      <Column>
-        <ThereLogo />
-        <Space height={23} />
+export const Footer = () => {
+  const { setOpenState } = useContext(ModalContext)
 
-        <span>Follow our team</span>
-        <Space height={11} />
+  return (
+    <NarrowContainer>
+      <Space height={172} />
+      <StyledWrapper>
+        <Column>
+          <ThereLogo />
+          <Space height={23} />
 
-        <Socials>
-          <a href="#">
-            <AngleList />
-          </a>
-          <a href="#">
-            <Dribbble />
-          </a>
-          <a href="#">
-            <Github />
-          </a>
-          <a href="#">
-            <Twitter />
-          </a>
-        </Socials>
-        <Space height={19} />
+          <span>Follow our team</span>
+          <Space height={11} />
 
-        <span>© 2019 There PM</span>
-      </Column>
-      <Column>
-        <ColTitle>Product</ColTitle>
-        <FooterLink href="#">Request Access</FooterLink>
-        <FooterLink href="#">Feedback</FooterLink>
-        <FooterLink href="#">Help</FooterLink>
-        <FooterLink href="#">FAQ</FooterLink>
-      </Column>
-      <Column>
-        <ColTitle>Company</ColTitle>
-        <FooterLink href="#">About us</FooterLink>
-        <FooterLink href="#">Blog</FooterLink>
-        <FooterLink href="#">Press</FooterLink>
-        <FooterLink href="#">There Personal </FooterLink>
-      </Column>
-      <Column>
-        <ColTitle>1 Minute Video</ColTitle>
-        <VideoWrapper>
-          <VideoThumbnail />
-          <SignWrapper>
-            <OurSign />
-          </SignWrapper>
-        </VideoWrapper>
-      </Column>
-      <Column>
-        <ColTitle>Team</ColTitle>
+          <Socials>
+            <a href="https://angel.co/company/therepm">
+              <AngleList />
+            </a>
+            <a href="https://dribbble.com/morajabi">
+              <Dribbble />
+            </a>
+            <a href="https://dribbble.com/therehq">
+              <Github />
+            </a>
+            <a href="https://twitter.com/therehq">
+              <Twitter />
+            </a>
+          </Socials>
+          <Space height={19} />
 
-        <FooterLink href="#">Meet the team</FooterLink>
-        <FooterLink href="#">Join us!</FooterLink>
-      </Column>
-    </StyledWrapper>
-  </NarrowContainer>
-)
+          <span>© 2019 There PM</span>
+        </Column>
+        <Column>
+          <ColTitle>Product</ColTitle>
+          <FooterLink onClick={() => setOpenState(true)}>
+            Request Access
+          </FooterLink>
+          <FooterLink href="mailto:mo@there.pm">Feedback</FooterLink>
+          <FooterLink href="#">Help</FooterLink>
+          <FooterLink href="#">FAQ</FooterLink>
+        </Column>
+        <Column>
+          <ColTitle>Company</ColTitle>
+          <FooterLink href="https://twitter.com/therehq">About us</FooterLink>
+          <FooterLink href="https://morajabi.im/blog">Blog</FooterLink>
+          {/* <FooterLink href="#">Press</FooterLink> */}
+          <FooterLink href="https://there.pm">There Personal </FooterLink>
+        </Column>
+        <Column>
+          <ColTitle>1 Minute Video</ColTitle>
+          <VideoWrapper>
+            <VideoThumbnail />
+            <SoonWrapper>Soon!</SoonWrapper>
+            <SignWrapper>
+              <OurSign />
+            </SignWrapper>
+          </VideoWrapper>
+        </Column>
+        <Column>
+          <ColTitle>Team</ColTitle>
+
+          <FooterLink href="https://angel.co/company/therepm">
+            Meet the team
+          </FooterLink>
+          <FooterLink href="https://angel.co/company/therepm">
+            Join us!
+          </FooterLink>
+        </Column>
+      </StyledWrapper>
+    </NarrowContainer>
+  )
+}
 
 const StyledWrapper = styled(Wrapper)`
   display: grid;
@@ -133,6 +145,7 @@ const FooterLink = styled.a`
   letter-spacing: -0.03em;
   text-decoration-line: underline;
 
+  cursor: pointer;
   color: #5c6870;
 `
 
@@ -147,7 +160,8 @@ const VideoThumbnail = styled.div`
   box-shadow: 3px 3px 10px 0 #ddd;
   filter: saturate(0);
   transition: all 200ms;
-  cursor: pointer;
+  /* cursor: pointer; */
+  cursor: default;
 
   border-color: #490b5f;
   border-left: solid 2px;
@@ -155,9 +169,9 @@ const VideoThumbnail = styled.div`
   border-bottom: solid 4px;
   border-right: solid 4px;
 
-  :hover {
+  /* :hover {
     filter: saturate(1);
-  }
+  } */
 `
 
 const SignWrapper = styled.div`
@@ -166,6 +180,19 @@ const SignWrapper = styled.div`
   left: 20px;
   z-index: 15;
 
+  pointer-events: none;
+`
+
+const SoonWrapper = styled.div`
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+
+  color: white;
+  font-weight: bold;
+  font-size: 32px;
   pointer-events: none;
 `
 

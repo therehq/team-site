@@ -18,12 +18,10 @@ import { LastQuote } from '../components/LastQuote'
 import { Footer } from '../components/footer'
 import { ThereNews } from '../components/ThereNews'
 
-console.log(process.env.NODE_ENV)
-
 const client = createClient({
   url:
     process.env.NODE_ENV == 'production'
-      ? 'https://subscribers.morajabi.now.sh/graphql'
+      ? 'https://subscribers.api.there.team/graphql'
       : 'http://localhost:3001/graphql'
 })
 

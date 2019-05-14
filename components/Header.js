@@ -36,8 +36,8 @@ export const Header = () => (
       <Space height={33} />
       <RequestAccess />
 
-      <Space height={52} />
-      <TopShare />
+      {/* <Space height={52} /> */}
+      {/* <TopShare /> */}
 
       <Space height={184} />
       <SectionHeading maxWidth={410}>

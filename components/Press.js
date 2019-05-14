@@ -24,19 +24,19 @@ export const Press = () => (
           <ProductHunt />{' '}
         </PressItem>
 
-        <PressItem href="#">
+        <PressItem noLink>
           <GoldenKitty />{' '}
         </PressItem>
 
-        <PressItem href="#" noLink>
+        <PressItem noLink>
           <Tnw />{' '}
         </PressItem>
 
-        <PressItem href="#" noLink>
+        <PressItem noLink>
           <CssTricks />{' '}
         </PressItem>
 
-        <PressItem href="#" noLink>
+        <PressItem noLink>
           <DailyTeck />{' '}
         </PressItem>
       </PressWrapper>

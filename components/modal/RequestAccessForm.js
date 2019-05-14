@@ -24,10 +24,10 @@ export const RequestAccessForm = withRouter(
 
       return res
     }
-    // const isSubmitted = true
+
     return (
       <div>
-        {subscribed ? (
+        {!subscribed ? (
           <>
             <Title>Reserve your spot.</Title>
             <Subtitle>No marketing or sales emails spam, ever.</Subtitle>
