@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useMutation } from 'urql'
 import { Formik, Field, Form } from 'formik'
 
+import { openTwitterModal } from '../../utils/share'
 import { ModalContext } from '../modal/Context'
 import Space from '../shared/Space'
 
@@ -51,28 +52,34 @@ export const RequestAccessForm = withRouter(
               render={({ errors, touched, isSubmitting }) => (
                 <Form>
                   <Row>
-                    <InputTitle>Your name</InputTitle>
-                    <Input
-                      type="text"
-                      name="fullName"
-                      placeholder="Type your full name here"
-                    />
+                    <InputLabel>
+                      Your name
+                      <Input
+                        type="text"
+                        name="fullName"
+                        placeholder="Type your full name"
+                      />
+                    </InputLabel>
                   </Row>
                   <Row>
-                    <InputTitle>Your team name</InputTitle>
-                    <Input
-                      type="text"
-                      name="company"
-                      placeholder="Type your company name here"
-                    />
+                    <InputLabel>
+                      Team name
+                      <Input
+                        type="text"
+                        name="company"
+                        placeholder="Type your team name here"
+                      />
+                    </InputLabel>
                   </Row>
                   <Row>
-                    <InputTitle>Your work email</InputTitle>
-                    <Input
-                      type="text"
-                      name="email"
-                      placeholder="Type your email here"
-                    />
+                    <InputLabel>
+                      Your email
+                      <Input
+                        type="text"
+                        name="email"
+                        placeholder="Type your work email"
+                      />
+                    </InputLabel>
                   </Row>
                   {errors.email && (
                     <Error>{errors.email.replace('[GraphQL]', '')}</Error>
@@ -92,25 +99,15 @@ export const RequestAccessForm = withRouter(
 
             <Title align="center">You’re on the waitlist! 🎉</Title>
             <Subtitle align="center">
-              No marketing or sales emails spam, ever.
+              There are {620 + 0} people ahead, by sharing you'll get access
             </Subtitle>
             <Space height={20} />
 
             <Center>
-              <CloseButton onClick={() => setOpenState(false)}>
+              <SecondaryButton onClick={() => setOpenState(false)}>
                 Close
-              </CloseButton>
-              <Button
-                onClick={() =>
-                  window.open(
-                    'https://twitter.com/intent/tweet?url=https%3A%2F%2Fthere.team&text=I%27m%20on%20the%20waitlist%20of%20@ThereHQ.%20It%27s%20for%20remote%20teams%21%20',
-                    'Twitter',
-                    'width=600,height=300'
-                  )
-                }
-              >
-                Tweet!
-              </Button>
+              </SecondaryButton>
+              <Button onClick={() => openTwitterModal()}>Tweet!</Button>
             </Center>
           </MessageWrapper>
         )}
@@ -119,25 +116,25 @@ export const RequestAccessForm = withRouter(
   }
 )
 
-const AddSubscriber = `
-mutation(
-  $email: String!
-  $fullName: String
-  $company: String
-  $utmSource: String
-  $utmMedium: String
-  $utmCampaign: String
-) {
-  addSubscriber(
-    email: $email
-    fullName: $fullName
-    company: $company
-    utmSource: $utmSource
-    utmMedium: $utmMedium
-    utmCampaign: $utmCampaign
-    newsletterLevel: PreLaunch
-  )
-}
+const AddSubscriber = `#graphql
+  mutation(
+    $email: String!
+    $fullName: String
+    $company: String
+    $utmSource: String
+    $utmMedium: String
+    $utmCampaign: String
+  ) {
+    addSubscriber(
+      email: $email
+      fullName: $fullName
+      company: $company
+      utmSource: $utmSource
+      utmMedium: $utmMedium
+      utmCampaign: $utmCampaign
+      newsletterLevel: PreLaunch
+    )
+  }
 `
 
 const Title = styled.h2`
@@ -165,7 +162,7 @@ const Subtitle = styled.span`
   color: #a8a8a8;
 `
 
-const InputTitle = styled.h1`
+export const InputLabel = styled.label`
   margin: 0;
   font-family: ${p => p.theme.fontText};
 
@@ -177,9 +174,9 @@ const InputTitle = styled.h1`
   color: #7b7c83;
 `
 
-const Input = styled(Field)`
+export const Input = styled(Field)`
   display: flex;
-  height: 33px;
+  height: 38px;
   width: 100%;
   border: none;
   outline: none;
@@ -201,6 +198,12 @@ const Input = styled(Field)`
   :focus {
     border-bottom: 2px solid #999;
   }
+
+  :disabled {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 1px;
+    color: rgba(0, 0, 0, 0.6);
+  }
 `
 
 const Row = styled.div`
@@ -208,7 +211,7 @@ const Row = styled.div`
   margin-bottom: 36px;
 `
 
-const Button = styled.button`
+export const Button = styled.button`
   display: block;
   margin: auto;
   border: none;
@@ -228,10 +231,13 @@ const Button = styled.button`
 
   color: #ffffff;
   cursor: pointer;
+  position: relative;
+
+  * {
+    cursor: pointer;
+  }
 
   outline: none;
-  :hover {
-  }
 `
 
 const Error = styled.div`
@@ -245,7 +251,7 @@ const Error = styled.div`
 `
 const MessageWrapper = styled.div``
 
-const CloseButton = styled.a`
+export const SecondaryButton = styled.button`
   padding: 10px;
   font-family: ${p => p.theme.fontText};
   font-style: normal;
@@ -253,6 +259,8 @@ const CloseButton = styled.a`
   font-size: 16px;
   line-height: 1.31;
 
+  background: none;
+  border: none;
   color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 
