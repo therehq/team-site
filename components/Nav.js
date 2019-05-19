@@ -35,7 +35,7 @@ const RequestButton = styled.button`
   line-height: 0.86;
   border-radius: 3px;
   user-select: none;
-  transition: background 120ms ease-in 0s;
+  transition: background 140ms ease-in-out;
   padding: 8px 7px;
   color: ${p => p.theme.black1};
   cursor: pointer;
@@ -44,8 +44,12 @@ const RequestButton = styled.button`
 
   &:hover {
     background: rgba(55, 53, 47, 0.08);
-    /* padding-right: 5px; */
     color: #333;
+  }
+
+  &:active {
+    background: rgba(55, 53, 47, 0.18);
+    color: #222;
   }
 `
 
