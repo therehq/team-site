@@ -32,7 +32,7 @@ export const OurBlog = () => (
 )
 
 const StyledContainer = styled(Container)`
-  margin-top: 138px;
+  margin-top: 114px;
   min-height: 580px;
 
   display: flex;

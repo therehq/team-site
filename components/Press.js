@@ -13,31 +13,28 @@ import Tnw from '../static/press/tnw.svg'
 
 export const Press = () => (
   <NarrowContainer>
-    <Space height={194} />
+    <Space height={160} />
     <StyledWrapper>
-      <Title>
-        <strong>Featured by</strong> a variety of{' '}
-        <strong>the most reputable</strong> sources
-      </Title>
+      <FeatureTitle>Loved by people and featured in media.</FeatureTitle>
       <PressWrapper>
-        <PressItem href="#">
-          <ProductHunt />{' '}
+        <PressItemA href="https://producthunt.com/posts/there" target="_blank">
+          <ProductHunt />
+        </PressItemA>
+
+        <PressItem>
+          <GoldenKitty />
         </PressItem>
 
-        <PressItem noLink>
-          <GoldenKitty />{' '}
+        <PressItem>
+          <Tnw />
         </PressItem>
 
-        <PressItem noLink>
-          <Tnw />{' '}
+        <PressItem>
+          <CssTricks />
         </PressItem>
 
-        <PressItem noLink>
-          <CssTricks />{' '}
-        </PressItem>
-
-        <PressItem noLink>
-          <DailyTeck />{' '}
+        <PressItem>
+          <DailyTeck />
         </PressItem>
       </PressWrapper>
     </StyledWrapper>
@@ -45,19 +42,6 @@ export const Press = () => (
 )
 
 const StyledWrapper = styled(Wrapper)``
-
-const Title = styled.h2`
-  margin: 0;
-
-  font-family: ${p => p.theme.fontText};
-  font-size: ${p => p.theme.fontLarge21}px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1.28;
-  text-align: center;
-
-  color: #282d30;
-`
 
 const PressWrapper = styled.div`
   display: flex;
@@ -71,16 +55,11 @@ const PressWrapper = styled.div`
   }
 `
 
-const PressItem = styled.a`
-  margin-left: 53px;
-  opacity: 0.5;
-  transition: all 300ms;
-  cursor: ${p => (p.noLink ? 'none' : 'pointer')};
-  :hover {
-    opacity: 1;
-  }
+const pressItem = css`
+  margin-left: 50px;
+  opacity: 0.6;
 
-  :first-child {
+  &:first-child {
     margin-left: 0;
   }
 
@@ -88,4 +67,24 @@ const PressItem = styled.a`
     margin-left: 0;
     margin-top: 20px;
   }
+`
+
+const PressItem = styled.div`
+  ${pressItem}
+`
+
+const PressItemA = styled.a`
+  ${pressItem}
+`
+
+const FeatureTitle = styled.h2`
+  margin: 0 auto;
+  font-family: ${p => p.theme.fontTitle};
+  font-size: ${p => p.theme.fontLarge32}px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  text-align: center;
+
+  color: #2c353c;
 `
