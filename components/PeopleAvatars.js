@@ -7,6 +7,7 @@ import { mobile } from './style/mobile'
 import { Wrapper, NarrowContainer } from './shared/Containers'
 import { SectionHeading } from './shared/SectionHeading'
 import { CirclePlus } from './vectors/CirclePlus'
+import { ModalContext } from './modal/Context'
 
 export const PeopleAvatars = () => (
   <NarrowContainer>
@@ -14,24 +15,28 @@ export const PeopleAvatars = () => (
 
     <StyledWrapper>
       <SectionHeading>
-        <GrayColorText>There starts at time zones, </GrayColorText>
+        <GrayColorText>There starts at time zones,</GrayColorText>
         <br />
         However, it’s about people.
       </SectionHeading>
 
-      <Space height={29} />
+      <Space height={28} />
 
       <Avatars>
-        <Avatar src="../static/people/avatar1.svg" />
-        <Avatar src="../static/people/avatar2.svg" />
-        <Avatar src="../static/people/avatar3.svg" />
-        <Avatar src="../static/people/avatar4.svg" />
-        <Avatar src="../static/people/avatar5.svg" />
-        <Avatar src="../static/people/avatar6.svg" />
-        <Avatar src="../static/people/avatar7.svg" />
-        <Avatar src="../static/people/avatar8.svg" />
-        <Avatar src="../static/people/avatar9.svg" />
-        <CirclePlus />
+        <Avatar src="/static/people/avatar1.svg" />
+        <Avatar src="/static/people/avatar2.svg" />
+        <Avatar src="/static/people/avatar3.svg" />
+        <Avatar src="/static/people/avatar4.svg" />
+        <Avatar src="/static/people/avatar5.svg" />
+        <Avatar src="/static/people/avatar6.svg" />
+        <Avatar src="/static/people/avatar7.svg" />
+        <Avatar src="/static/people/avatar8.svg" />
+        <Avatar src="/static/people/avatar9.svg" />
+        <ModalContext.Consumer>
+          {({ setOpenState }) => (
+            <CirclePlus onClick={() => setOpenState(true)} />
+          )}
+        </ModalContext.Consumer>
       </Avatars>
     </StyledWrapper>
   </NarrowContainer>
