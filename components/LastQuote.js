@@ -11,10 +11,10 @@ import { RequestAccess } from './shared/RequestAccess'
 
 export const LastQuote = () => (
   <NarrowContainer>
-    <Space height={172} />
+    <Space height={124} />
     <StyledWrapper>
       <LargeQuote>
-        <img src="../static/Chris.png" />
+        <img src="/static/Chris.png" />
         <div>
           <Space height={11} />
           <Quote>
@@ -55,7 +55,7 @@ export const LastQuote = () => (
 const StyledWrapper = styled(Wrapper)`
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-column-gap: 140px;
+  grid-column-gap: 120px;
 
   ${mobile(css`
     grid-template-columns: auto;
@@ -68,8 +68,9 @@ const StyledWrapper = styled(Wrapper)`
 const LargeQuote = styled.div`
   display: grid;
   grid-template-columns: 250px auto;
-  grid-column-gap: 36px;
+  grid-column-gap: auto;
   align-items: center;
+  margin-left: -42px;
 
   @media (max-width: 700px) {
     grid-template-columns: auto;
@@ -143,6 +144,8 @@ const Role = styled.span`
 `
 
 const Reserve = styled.div`
+  max-width: 475px;
+
   ${mobile(css`
     display: flex;
     flex-direction: column;
@@ -153,13 +156,14 @@ const Reserve = styled.div`
   `)}
 `
 
-const Tip = styled.span`
+const Tip = styled.div`
+  max-width: 395px;
   font-family: ${p => p.theme.fontText};
 
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  line-height: 19px;
+  line-height: 1.35;
 
   color: #81878e;
 `

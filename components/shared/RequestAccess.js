@@ -24,9 +24,9 @@ export const RequestAccess = () => {
 }
 
 const Wrapper = styled.div`
-  width: 355px;
+  width: auto;
   height: 40px;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
 
@@ -62,9 +62,9 @@ const RequestButton = styled.button`
 `
 
 const InputBox = styled.input`
-  flex-grow: 1;
   margin-left: 15px;
   display: block;
+  width: 220px;
 
   border: none;
   outline: none;

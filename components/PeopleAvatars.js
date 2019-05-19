@@ -12,11 +12,11 @@ import { SectionLine } from './shared/SectionLine'
 
 export const PeopleAvatars = () => (
   <NarrowContainer>
-    <Space height={42} />
+    <Space height={52} />
 
     <SectionLine />
 
-    <Space height={72} />
+    <Space height={52} />
 
     <StyledWrapper>
       <SectionHeading>

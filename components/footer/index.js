@@ -89,7 +89,7 @@ export const Footer = () => {
 
 const StyledWrapper = styled(Wrapper)`
   display: grid;
-  grid-template-columns: 122px 1fr 1fr 1.5fr 2fr;
+  grid-template-columns: 132px 1fr 1fr 1.5fr 1.5fr;
   grid-column-gap: 75px;
 
   ${mobile(css`
@@ -131,7 +131,7 @@ const Socials = styled.div`
   display: flex;
   justify-content: space-between;
 
-  max-width: 130px;
+  max-width: 120px;
 `
 
 const FooterLink = styled.a`
