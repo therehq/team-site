@@ -3,15 +3,17 @@ import NextLink from 'next/link'
 import styled from 'styled-components'
 
 // Locals
+import ThereLogo from '../static/footer/ThereLogoBlue.svg'
 import { Wrapper } from './shared/Containers'
-import { There } from './vectors/logos/There'
 import { ModalContext } from './modal/Context'
 
 export const Nav = () => {
   const { setOpenState } = useContext(ModalContext)
   return (
     <StyledWrapper>
-      <There />
+      <LogoLink href="/">
+        <ThereLogo />
+      </LogoLink>
       <RequestButton onClick={() => setOpenState(true)}>
         Request Access
       </RequestButton>
@@ -44,5 +46,11 @@ const RequestButton = styled.button`
     background: rgba(55, 53, 47, 0.08);
     /* padding-right: 5px; */
     color: #333;
+  }
+`
+
+const LogoLink = styled.a`
+  &:hover {
+    filter: drop-shadow(1px 2px 0px rgba(0, 0, 0, 0.1));
   }
 `
