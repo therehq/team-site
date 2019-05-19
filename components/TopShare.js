@@ -41,76 +41,78 @@ export const TopShare = () => {
           <span>Share the link with your team</span>
         </ShareItem>
 
-        {isTeamPopupOpen && (
-          <Popup>
-            <Formik
-              initialValues={{
-                teamName: '',
-                linkRef: React.createRef(),
-                openSlack: false
-              }}
-              onSubmit={(values, formik) => {
-                if (!values.linkRef) {
-                  return
-                }
-                // Copy to clipboard
-                values.linkRef.current.select()
-                document.execCommand('copy')
-
-                if (values.openSlack) {
-                  window.location.replace('slack://open')
-                }
-
-                formik.setStatus(true)
-              }}
-            >
-              {props => (
-                <Form>
-                  <InputLabel>
-                    What's your team name?
-                    <Input
-                      innerRef={teamInputRef}
-                      name="teamName"
-                      placeholder="Type here..."
-                    />
-                  </InputLabel>
-                  <Space height={8} />
-                  <InputLabel>
-                    Share in your team's chat
-                    <Textarea
-                      ref={props.values.linkRef}
-                      rows={4}
-                      readonly
-                      value={`👋 check out There! I created a team link, you can reserve your spot: https://there.team/?team=${encodeURI(
-                        props.values.teamName
-                      )}`}
-                    />
-                  </InputLabel>
-                  <Buttons>
-                    <SecondaryButton style={{ padding: 6 }}>
-                      Close
-                    </SecondaryButton>
-
-                    <SecondaryButton
-                      style={{ padding: 6 }}
-                      onClick={() => {
-                        props.setFieldValue('openSlack', true)
-                        props.submitForm()
-                      }}
-                    >
-                      Open Slack
-                    </SecondaryButton>
-                    <Button style={{ margin: 0, marginLeft: 8 }} type="submit">
-                      {props.status ? 'Copied!' : 'Copy'}
-                    </Button>
-                  </Buttons>
-                </Form>
-              )}
-            </Formik>
-          </Popup>
-        )}
+        {isTeamPopupOpen && <CopyLinkPopup firstInputRef={teamInputRef} />}
       </ItemWrapper>
     </Wrapper>
+  )
+}
+
+export const CopyLinkPopup = ({ firstInputRef }) => {
+  return (
+    <Popup>
+      <Formik
+        initialValues={{
+          teamName: '',
+          linkRef: React.createRef(),
+          openSlack: false
+        }}
+        onSubmit={(values, formik) => {
+          if (!values.linkRef) {
+            return
+          }
+          // Copy to clipboard
+          values.linkRef.current.select()
+          document.execCommand('copy')
+
+          if (values.openSlack) {
+            window.location.replace('slack://open')
+          }
+
+          formik.setStatus(true)
+        }}
+      >
+        {props => (
+          <Form>
+            <InputLabel>
+              What's your team name?
+              <Input
+                innerRef={firstInputRef}
+                name="teamName"
+                placeholder="Type here..."
+              />
+            </InputLabel>
+            <Space height={8} />
+            <InputLabel>
+              Share in your team's chat
+              <Textarea
+                ref={props.values.linkRef}
+                rows={4}
+                readonly
+                value={`👋 check out There! I created a team link, you can reserve your spot: https://there.team/?team=${encodeURI(
+                  props.values.teamName
+                )}`}
+              />
+            </InputLabel>
+            <Buttons>
+              <SecondaryButton style={{ padding: 6 }}>Close</SecondaryButton>
+
+              <SecondaryButton
+                style={{ padding: 6 }}
+                onClick={() => {
+                  props.setFieldValue('openSlack', true)
+                  props.submitForm()
+                }}
+              >
+                Open Slack
+              </SecondaryButton>
+              <Button style={{ margin: 0, marginLeft: 8 }} type="submit">
+                {props.status ? 'Copied!' : 'Copy'}
+              </Button>
+            </Buttons>
+          </Form>
+        )}
+      </Formik>
+    </Popup>
   )
 }
 
