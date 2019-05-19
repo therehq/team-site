@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // Locals
@@ -31,12 +31,13 @@ import { GoDaddy } from '../vectors/logos/GoDaddy'
 import { Atlassian } from '../vectors/logos/Atlassian'
 import { TransferWise } from '../vectors/logos/TransferWise'
 import { BackgroundSlider } from './BackgroundSlider'
+import { Tooltip } from '../shared/Tooltip'
 
 export const OurCustomers = () => (
   <StyledContainer>
     <SectionSubtitle>
       People from the <strong>most renowned distributed teams</strong> are using{' '}
-      <strong>There</strong>
+      <strong>There</strong> <WhichThere />
     </SectionSubtitle>
 
     <Space height={45} />
@@ -100,5 +101,40 @@ const LogoWrapper = styled.div`
 
   svg {
     margin-right: 65px;
+  }
+`
+
+// -------------------------
+export const WhichThere = () => {
+  const [show, setOpen] = useState(false)
+  return (
+    <HelpWrapper
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <HelpIcon>?</HelpIcon>
+      {show && <Tooltip bottomCenter>Our MVP for There 1</Tooltip>}
+    </HelpWrapper>
+  )
+}
+
+const HelpWrapper = styled.span`
+  position: relative;
+  height: 16px;
+  width: 16px;
+  margin-left: -6px;
+  display: inline-block;
+`
+
+const HelpIcon = styled.span`
+  font-size: 0.8em;
+  line-height: 0;
+  font-weight: 600;
+  cursor: default;
+  vertical-align: super;
+  color: #999;
+
+  &:hover {
+    color: #555;
   }
 `
