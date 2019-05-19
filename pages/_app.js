@@ -1,5 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { styledTheme } from '../utils/theme'
 
@@ -19,6 +20,9 @@ class MyApp extends App {
 
     return (
       <Container>
+        <Head>
+          <title>There — Remote teams' home.</title>
+        </Head>
         <ThemeProvider theme={styledTheme}>
           <>
             <GlobalStyle />

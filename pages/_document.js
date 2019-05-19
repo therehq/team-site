@@ -43,7 +43,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>There — Remote teams' home.</title>
           <link
             href="https://fonts.googleapis.com/css?family=Alegreya+Sans:800|IBM+Plex+Sans:400,400i,600"
             rel="stylesheet"
@@ -53,7 +52,6 @@ class MyDocument extends Document {
             type="text/css"
             href="node_modules/@reach/dialog/styles.css"
           />
-
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{ __html: heapScript }}
