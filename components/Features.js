@@ -13,7 +13,7 @@ import { mobile } from './style/mobile'
 
 export const Features = () => (
   <NarrowContainer>
-    <Space height={96} />
+    <Space height={82} />
     <StyledWrapper>
       <FeatureItem>
         <DefineEvents />

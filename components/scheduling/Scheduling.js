@@ -13,7 +13,7 @@ import { mobile } from '../style/mobile'
 
 export const Scheduling = () => (
   <NarrowContainer>
-    <Space height={100} />
+    <Space height={86} />
 
     <StyledWrapper>
       <StockPhotosWrapper>
@@ -55,7 +55,7 @@ const StyledWrapper = styled(Wrapper)`
   display: grid;
   grid-template-columns: 33% 34% 33%;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   ${mobile(css`
     grid-template-columns: 100%;
@@ -68,6 +68,7 @@ const StyledWrapper = styled(Wrapper)`
 
 const SectionDetails = styled.div`
   max-width: 357px;
+
   ${mobile(css`
     * {
       text-align: center;

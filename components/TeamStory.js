@@ -7,10 +7,12 @@ import { mobile } from './style/mobile'
 import { Wrapper, NarrowContainer } from './shared/Containers'
 import { SectionHeading } from './shared/SectionHeading'
 import { SectionSubtitle } from './shared/SectionSubtitle'
+import { SectionLine } from './shared/SectionLine'
 
 export const TeamStory = () => (
   <NarrowContainer>
-    <Space height={160} />
+    <Space height={72} />
+
     <StyledWrapper>
       <SectionImage>
         <TeamStoryImage />
@@ -18,15 +20,15 @@ export const TeamStory = () => (
         <SectionImageTitle>For fully-distributed teams</SectionImageTitle>
       </SectionImage>
       <SectionData>
-        <SectionSup>Team Story</SectionSup>
+        <SectionSup>Team Feed</SectionSup>
         <SectionHeading align="left" maxWidth={396}>
           Deeper team rapport. Beyond avatars.
         </SectionHeading>
         <Space height={16} />
 
-        <SectionSubtitle align="left">
+        <SectionSubtitle align="left" maxWidth={489}>
           There is particularly designed to convey co-presence. Team Story
-          feature inteligently transfers the positive sense of working together
+          feature intelligently transfers the positive sense of working together
           in a team. It’s beyond plain avatars.
         </SectionSubtitle>
       </SectionData>
@@ -36,7 +38,7 @@ export const TeamStory = () => (
 
 const StyledWrapper = styled(Wrapper)`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 
   ${mobile(css`

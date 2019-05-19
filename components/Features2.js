@@ -15,7 +15,7 @@ import { DayAndNight } from './vectors/features/DayAndNight'
 
 export const Features2 = () => (
   <NarrowContainer>
-    <Space height={130} />
+    <Space height={72} />
     <StyledWrapper>
       <TeamStoryImage />
 
@@ -28,10 +28,16 @@ export const Features2 = () => (
         <Space height={19} />
 
         <SectionSubtitle align="left" maxWidth={505}>
-          Team Story feature is built for teammates and it can’t be used as a
-          management tool at all. It is the magical feed of positive-only
-          descriptive statuses. Combined automatically in from the work hours,
-          daily work applications, off times, travel plans and more.
+          Team Feed feature is built for teammates, not managers. It is the
+          magical feed of your teammates in their work time. Automatically
+          derived from projects they're working on and{' '}
+          <span
+            style={{ borderBottom: `1px dotted rgba(0,0,0,0.5)` }}
+            title="It doesn't know all your apps, only apps like Figma, Sketch, Code editors, Asana or alike."
+          >
+            work-related apps
+          </span>{' '}
+          they're using, to name a few.
         </SectionSubtitle>
 
         <ItemsWrapper>
@@ -110,7 +116,7 @@ const SectionData = styled.div`
 `
 
 const ItemsWrapper = styled.div`
-  margin-top: 28px;
+  margin-top: 36px;
 
   display: grid;
   grid-template-columns: auto auto;
@@ -129,7 +135,7 @@ const ItemsWrapper = styled.div`
 const Item = styled.div`
   display: grid;
   grid-template-columns: 54px auto;
-  grid-column-gap: 21px;
+  grid-column-gap: 20px;
 `
 
 const ItemsText = styled.div`

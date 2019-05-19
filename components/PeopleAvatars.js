@@ -8,10 +8,15 @@ import { Wrapper, NarrowContainer } from './shared/Containers'
 import { SectionHeading } from './shared/SectionHeading'
 import { CirclePlus } from './vectors/CirclePlus'
 import { ModalContext } from './modal/Context'
+import { SectionLine } from './shared/SectionLine'
 
 export const PeopleAvatars = () => (
   <NarrowContainer>
-    <Space height={130} />
+    <Space height={42} />
+
+    <SectionLine />
+
+    <Space height={72} />
 
     <StyledWrapper>
       <SectionHeading>

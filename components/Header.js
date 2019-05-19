@@ -17,7 +17,7 @@ export const Header = () => (
     <Space height={46} />
     <Nav />
 
-    <Space height={63} />
+    <Space height={62} />
     <StyledWrapper>
       <LaptopSet />
 
@@ -36,10 +36,10 @@ export const Header = () => (
       <Space height={33} />
       <RequestAccess />
 
-      {/* <Space height={52} /> */}
-      {/* <TopShare /> */}
+      <Space height={52} />
+      <TopShare />
 
-      <Space height={184} />
+      <Space height={152} />
       <SectionHeading maxWidth={410}>
         Rebuilt from scratch. For <UnderSign> remote-first teams.</UnderSign>
       </SectionHeading>
@@ -51,7 +51,7 @@ export const Header = () => (
         scheduling and time differences. Providing the foundation to work
         together remotely, smoothly and closely.
       </SectionSubtitle>
-      <Space height={134} />
+      <Space height={114} />
     </StyledWrapper>
   </NarrowContainer>
 )

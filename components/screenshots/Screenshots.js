@@ -15,7 +15,7 @@ import { mobile } from '../style/mobile'
 export const Screenshots = () => (
   <NarrowContainer>
     <StyledWrapper>
-      <Space height={90} />
+      <Space height={72} />
       <SectionHeading maxWidth={409}>
         Working remotely Quicker. Simpler. Closer.
       </SectionHeading>
@@ -90,6 +90,7 @@ const SliderWrapper = styled.div`
 const SideNav = styled.div`
   flex-shrink: 0;
   width: 400px;
+  padding-left: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;

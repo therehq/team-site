@@ -44,7 +44,7 @@ const Home = () => {
         <LastQuote />
         <Footer />
 
-        <Space height={30} />
+        <Space height={86} />
       </ModalProvider>
     </Provider>
   )
