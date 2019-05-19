@@ -7,7 +7,12 @@ import { mobile } from './style/mobile'
 import Twitter from './vectors/share/Twitter'
 import Copy from './vectors/share/Copy'
 import { openTwitterModal } from '../utils/share'
-import { Input, Button, InputLabel } from './modal/RequestAccessForm'
+import {
+  Input,
+  Button,
+  InputLabel,
+  SecondaryButton
+} from './modal/RequestAccessForm'
 import Space from './shared/Space'
 
 export const TopShare = () => {
@@ -41,7 +46,8 @@ export const TopShare = () => {
             <Formik
               initialValues={{
                 teamName: '',
-                linkRef: React.createRef()
+                linkRef: React.createRef(),
+                openSlack: false
               }}
               onSubmit={(values, formik) => {
                 if (!values.linkRef) {
@@ -50,8 +56,12 @@ export const TopShare = () => {
                 // Copy to clipboard
                 values.linkRef.current.select()
                 document.execCommand('copy')
+
+                if (values.openSlack) {
+                  window.location.replace('slack://open')
+                }
+
                 formik.setStatus(true)
-                setTimeout(() => setTeamPopupIsOpen(false), 220)
               }}
             >
               {props => (
@@ -76,12 +86,24 @@ export const TopShare = () => {
                       )}`}
                     />
                   </InputLabel>
-                  <Button
-                    style={{ marginTop: 8, marginRight: 0 }}
-                    type="submit"
-                  >
-                    {props.status ? 'Copied!' : 'Copy'}
-                  </Button>
+                  <Buttons>
+                    <SecondaryButton style={{ padding: 6 }}>
+                      Close
+                    </SecondaryButton>
+
+                    <SecondaryButton
+                      style={{ padding: 6 }}
+                      onClick={() => {
+                        props.setFieldValue('openSlack', true)
+                        props.submitForm()
+                      }}
+                    >
+                      Open Slack
+                    </SecondaryButton>
+                    <Button style={{ margin: 0, marginLeft: 8 }} type="submit">
+                      {props.status ? 'Copied!' : 'Copy'}
+                    </Button>
+                  </Buttons>
                 </Form>
               )}
             </Formik>
@@ -109,11 +131,19 @@ const Popup = styled.div`
   top: 2em;
   padding: 1.4rem 1.4rem;
   z-index: 10;
+  width: 100%;
+  min-width: 300px;
 
   background: white;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 9px 18px rgba(0, 0, 0, 0.12), 0 1px 6px rgba(0, 0, 0, 0.08);
+`
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
 `
 
 const Textarea = styled.textarea`
