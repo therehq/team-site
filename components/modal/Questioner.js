@@ -43,9 +43,9 @@ export const Questioner = withRouter(
           <Separator />
           <Formik
             initialValues={{
-              fullName: '',
-              company: '',
-              email: defaultEmail
+              remoteTeam: '',
+              teamSize: '',
+              likelyToBuy: ''
             }}
             onSubmit={async (values, { props, setSubmitting, setErrors }) => {
               const result = await addSubscriberHandler(values)
@@ -57,7 +57,7 @@ export const Questioner = withRouter(
                 // successful
               }
             }}
-            render={({ errors, touched, isSubmitting }) => (
+            render={({ errors, touched, isSubmitting, setFieldValue }) => (
               <div>
                 <InputLabel>
                   Are you a remote team?
@@ -68,7 +68,9 @@ export const Questioner = withRouter(
                       'Remote friendly',
                       'Not remote'
                     ]}
-                    // onChange={}
+                    onChange={e => {
+                      setFieldValue('remoteTeam', e)
+                    }}
                   />
                 </InputLabel>
                 <Separator />
@@ -77,6 +79,9 @@ export const Questioner = withRouter(
                   How many people are you?
                   <MultiSelect
                     options={['1-10', '11-50', '51-100', '101-300']}
+                    onChange={e => {
+                      setFieldValue('teamSize', e)
+                    }}
                   />
                 </InputLabel>
                 <Separator />
@@ -90,6 +95,9 @@ export const Questioner = withRouter(
                       'Not likely',
                       'Don’t know'
                     ]}
+                    onChange={e => {
+                      setFieldValue('likelyToBuy', e)
+                    }}
                   />
                 </InputLabel>
                 <Center>
