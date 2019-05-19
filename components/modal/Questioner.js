@@ -5,11 +5,11 @@ import { useMutation } from 'urql'
 import { Formik, Field, Form } from 'formik'
 
 import { openTwitterModal } from '../../utils/share'
-import { ModalContext } from '../modal/Context'
+import { ModalContext } from './Context'
 import Space from '../shared/Space'
-import { Questioner } from './Questioner'
+import { MultiSelect } from './MutilSelect'
 
-export const RequestAccessForm = withRouter(
+export const Questioner = withRouter(
   ({ setOpenState, setEmailState, defaultEmail, router }) => {
     const { subscribed, setSubscribedState } = useContext(ModalContext)
     const [mutation, executeMutation] = useMutation(AddSubscriber)
@@ -29,94 +29,81 @@ export const RequestAccessForm = withRouter(
 
     return (
       <div>
-        {subscribed ? (
-          <>
-            <Title>Reserve your spot.</Title>
-            <Subtitle>No marketing or sales emails spam, ever.</Subtitle>
-            <Space height={53} />
-            <Formik
-              initialValues={{
-                fullName: '',
-                company: '',
-                email: defaultEmail
-              }}
-              onSubmit={async (values, { props, setSubmitting, setErrors }) => {
-                const result = await addSubscriberHandler(values)
-                setSubmitting(false)
+        <MessageWrapper>
+          <Space height={15} />
 
-                if (result.error) {
-                  setErrors({ email: result.error.message })
-                } else {
-                  // successful
-                }
-              }}
-              render={({ errors, touched, isSubmitting }) => (
-                <Form>
-                  <Row>
-                    <InputLabel>
-                      Your name
-                      <Input
-                        type="text"
-                        name="fullName"
-                        placeholder="Type your full name"
-                      />
-                    </InputLabel>
-                  </Row>
-                  <Row>
-                    <InputLabel>
-                      Team name
-                      <Input
-                        type="text"
-                        name="company"
-                        placeholder="Type your team name here"
-                      />
-                    </InputLabel>
-                  </Row>
-                  <Row>
-                    <InputLabel>
-                      Your email
-                      <Input
-                        type="text"
-                        name="email"
-                        placeholder="Type your work email"
-                      />
-                    </InputLabel>
-                  </Row>
-                  {errors.email && (
-                    <Error>{errors.email.replace('[GraphQL]', '')}</Error>
-                  )}
-                  <Space height={20} />
+          <Title align="center">You’re on the waitlist! 🎉</Title>
+          <Subtitle align="center">
+            Answering these 3 questions will significantly help us.
+            <br />
+            <SecondaryButton onClick={() => setOpenState(false)}>
+              Close
+            </SecondaryButton>
+          </Subtitle>
+          <Separator />
+          <Formik
+            initialValues={{
+              fullName: '',
+              company: '',
+              email: defaultEmail
+            }}
+            onSubmit={async (values, { props, setSubmitting, setErrors }) => {
+              const result = await addSubscriberHandler(values)
+              setSubmitting(false)
 
-                  <Button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Adding...' : 'Request Access'}
-                  </Button>
-                </Form>
-              )}
-            />
-          </>
-        ) : (
-          <Questioner />
-        )}
+              if (result.error) {
+                setErrors({ email: result.error.message })
+              } else {
+                // successful
+              }
+            }}
+            render={({ errors, touched, isSubmitting }) => (
+              <div>
+                <InputLabel>
+                  Are you a remote team?
+                  <MultiSelect
+                    options={[
+                      'Fully remote',
+                      'Mostly remote',
+                      'Remote friendly',
+                      'Not remote'
+                    ]}
+                    // onChange={}
+                  />
+                </InputLabel>
+                <Separator />
+
+                <InputLabel>
+                  How many people are you?
+                  <MultiSelect
+                    options={['1-10', '11-50', '51-100', '101-300']}
+                  />
+                </InputLabel>
+                <Separator />
+
+                <InputLabel>
+                  How likely are you to buy There after trying it?
+                  <MultiSelect
+                    options={[
+                      'Very likely',
+                      'Somewhat likely',
+                      'Not likely',
+                      'Don’t know'
+                    ]}
+                  />
+                </InputLabel>
+                <Center>
+                  <Button type="submit">Submit</Button>
+                </Center>
+              </div>
+            )}
+          />
+        </MessageWrapper>
       </div>
     )
   }
 )
-// <MessageWrapper>
-//   <Space height={15} />
 
-//   <Title align="center">You’re on the waitlist! 🎉</Title>
-//   <Subtitle align="center">
-//     There are {620 + 0} people ahead, by sharing you'll get access
-//   </Subtitle>
-//   <Space height={20} />
-
-//   <Center>
-//     <SecondaryButton onClick={() => setOpenState(false)}>
-//       Close
-//     </SecondaryButton>
-//     <Button onClick={() => openTwitterModal()}>Tweet!</Button>
-//   </Center>
-// </MessageWrapper>
 const AddSubscriber = `#graphql
   mutation(
     $email: String!
@@ -282,9 +269,12 @@ const Center = styled.div`
   }
 `
 
-/*
-  send data to 
-https://github.com/morajabi/there/blob/add/homepage/lambdas/subscribers/index.js
-https://subscribers.morajabi.now.sh/graphql
+const Separator = styled.div`
+  margin-top: 13px;
+  margin-bottom: 16px;
 
-*/
+  width: 100%;
+  height: 0px;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+`

@@ -26,7 +26,7 @@ export const Modal = ({
 
 export const StyledDialog = styled(DialogContent)`
   width: 555px;
-  max-height: 546px;
+  /* max-height: 576px; */
   padding: 35px 40px;
   background: #fff;
   border-radius: 3px;
