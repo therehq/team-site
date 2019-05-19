@@ -5,12 +5,10 @@ import styled from 'styled-components'
 import { Container } from './shared/Containers'
 
 export const ThereNews = () => (
-  <Container>
-    <Wrapper>
-      Download our free <strong>time zone menubar app</strong> here 👉
-      <Button href="https://there.pm">Go to there.pm</Button>
-    </Wrapper>
-  </Container>
+  <Wrapper>
+    Looking for our free time zone menubar app?{' '}
+    <Button href="https://there.pm">Get it on there.pm</Button>
+  </Wrapper>
 )
 
 const Wrapper = styled.div`
@@ -18,18 +16,24 @@ const Wrapper = styled.div`
 
   font-family: ${p => p.theme.fontText};
   font-size: 16px;
+  line-height: 1.5;
   text-align: center;
 
   color: rgb(255, 255, 255);
-  background: rgb(8, 33, 51);
-  padding: 20px;
+  background: radial-gradient(772.5px at 50% -650%, #214967 0%, #0d2d45 100%);
+  padding: 13px;
+  position: relative;
 `
 
 const Button = styled.a`
-  padding: 4px 8px;
+  padding: 2px 8px;
   color: #fff;
 
-  background-color: rgb(159, 107, 244);
+  background: linear-gradient(
+    190deg,
+    rgba(140, 200, 255, 0.6) -45%,
+    rgba(0, 87, 255, 0.8) 90%
+  );
   white-space: nowrap;
   font-weight: 600;
   font-size: 14px;
