@@ -24,7 +24,7 @@ export const Modal = ({
   </StyledDialogOverlay>
 )
 
-const StyledDialog = styled(DialogContent)`
+export const StyledDialog = styled(DialogContent)`
   width: 555px;
   max-height: 546px;
   padding: 35px 40px;
@@ -34,7 +34,7 @@ const StyledDialog = styled(DialogContent)`
   outline: none;
 `
 
-const StyledDialogOverlay = styled(DialogOverlay)`
+export const StyledDialogOverlay = styled(DialogOverlay)`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
