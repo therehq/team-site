@@ -13,7 +13,7 @@ import { mobile } from './style/mobile'
 
 export const Features = () => (
   <NarrowContainer>
-    <Space height={125} />
+    <Space height={96} />
     <StyledWrapper>
       <FeatureItem>
         <DefineEvents />
@@ -68,7 +68,9 @@ const StyledWrapper = styled(Wrapper)`
   display: grid;
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, auto);
-  grid-row-gap: 130px;
+  grid-row-gap: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   ${mobile(css`
     grid-template-columns: 100%;

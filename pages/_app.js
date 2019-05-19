@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     background: white;
+    font-family: ${p => p.theme.fontText}, ${p => p.theme.fontSystem};
   }
   a{
     text-decoration: none;
