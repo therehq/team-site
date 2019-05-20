@@ -199,11 +199,6 @@ const ShareItem = styled.button`
     }
   }
 
-  :first-child {
-    margin-left: 0;
-    margin-top: 0;
-  }
-
   span {
     margin-left: 9px;
   }
@@ -213,6 +208,10 @@ const ItemWrapper = styled.div`
   margin-left: 89px;
   position: relative;
 
+  :first-child {
+    margin-left: 0;
+    margin-top: 0;
+  }
   ${mobile(css`
     margin-left: 0;
     margin-top: 25px;
