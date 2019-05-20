@@ -102,7 +102,7 @@ const TeamStoryImage = styled.div`
   flex-shrink: 0;
   width: 567px;
   height: 448px;
-  background: url('../static/remoteWorker.png');
+  background: url(${require('../static/remoteWorker.png')});
   background-size: cover;
 `
 

@@ -35,7 +35,7 @@ const Home = () => {
           name="description"
           content="Beyond traditional remote working. There solves scheduling and collaboration across timezones. Request early access for your distributed team."
         />
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
       </Head>
       <Provider value={client}>
         <ModalProvider>

@@ -28,7 +28,7 @@ export class Quotes extends Component {
           <QuoteBoxMedium
             title="The idea"
             quote="I really like the idea of There, especially helpful when you’re working with a remote team in different timezones."
-            image="../static/avatars/1.jpg"
+            image={require('../static/avatars/1.jpg')}
             status="Holger Bartel, Colloq.io"
             name=""
           />
@@ -36,7 +36,7 @@ export class Quotes extends Component {
           <QuoteBoxMedium
             title="I've never seen"
             quote="Working with a distributed global team? I've never seen a team pick up an app so fast."
-            image="../static/avatars/2.jpg"
+            image={require('../static/avatars/2.jpg')}
             name="Miko"
             status="Holger Bartel, Colloq.io"
           />
@@ -44,7 +44,7 @@ export class Quotes extends Component {
           <QuoteBoxMedium
             title="Game changer"
             quote="This is a game changer for remote teams & clients."
-            image="../static/avatars/3.jpg"
+            image={require('../static/avatars/3.jpg')}
             name="Sam"
             status="Product Manager at Handsome"
           />
@@ -52,7 +52,7 @@ export class Quotes extends Component {
           <QuoteBoxMedium
             title="Super easy"
             quote="In love with There — makes handling multiple timezones super easy!"
-            image="../static/avatars/AndrewHyde.jpg"
+            image={require('../static/avatars/AndrewHyde.jpg')}
             name="Andrew Hyde"
             status="Founder at Portl"
           />
@@ -60,7 +60,7 @@ export class Quotes extends Component {
           <QuoteBoxMedium
             title="You owe it"
             quote="If you work on a distributed team, you owe it to yourself to check out There."
-            image="../static/avatars/ChrisMessina.jpg"
+            image={require('../static/avatars/ChrisMessina.jpg')}
             name="Chris Messina"
             status=""
           />

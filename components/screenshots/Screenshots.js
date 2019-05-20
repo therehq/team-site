@@ -13,6 +13,18 @@ import Schedule from './icons/Schedule'
 import TimeAndPlace from './icons/TimeAndPlace'
 import TeamHome from './icons/TeamHome'
 
+// Images
+import ShotHome from '../../static/shots/home.jpg'
+import ShotHome2x from '../../static/shots/home@2x.jpg'
+import ShotTimeline from '../../static/shots/timeline.jpg'
+import ShotTimeline2x from '../../static/shots/timeline@2x.jpg'
+import ShotTeammate from '../../static/shots/teammate.jpg'
+import ShotTeammate2x from '../../static/shots/teammate@2x.jpg'
+import ShotTimeAndPlace from '../../static/shots/time-and-place.jpg'
+import ShotTimeAndPlace2x from '../../static/shots/time-and-place@2x.jpg'
+import ShotOffice from '../../static/shots/team-floor.jpg'
+import ShotOffice2x from '../../static/shots/team-floor@2x.jpg'
+
 export const Screenshots = () => {
   const [activeTabInd, setActiveTab] = useState(0)
   const activeTab = tabs[activeTabInd]
@@ -39,8 +51,8 @@ export const Screenshots = () => {
                       {description}
                     </PosedNavItemSubtitle>
                     <img
-                      src={`/static/shots/${tab.imageFileName}.jpg`}
-                      srcSet={`/static/shots/${tab.imageFileName}@2x.jpg 2x`}
+                      src={tab.images[0]}
+                      srcSet={`${tab.images[1]} 2x`}
                       style={hiddenImage}
                     />
                   </NavItemData>
@@ -60,10 +72,9 @@ export const Screenshots = () => {
                     }}
                   >
                     <img
-                      src={`/static/shots/${activeTab.imageFileName}.jpg`}
-                      srcSet={`/static/shots/${
-                        activeTab.imageFileName
-                      }@2x.jpg 2x`}
+                      src={activeTab.images[0]}
+                      srcSet={`${activeTab.images[1]} 2x`}
+                      alt={activeTab.title}
                     />
                   </PosedDesktopAppImage>
                 </PoseGroup>
@@ -80,7 +91,7 @@ const tabs = [
   {
     title: 'Today, Team Feed',
     description: `Look around the office! Get a sense of what’s going on in the team`,
-    imageFileName: 'home',
+    images: [ShotHome, ShotHome2x],
     maxWidth: 668,
     maxHeight: 334,
     IconComponent: TeamHome
@@ -88,7 +99,7 @@ const tabs = [
   {
     title: 'Schedule',
     description: `We set out to make the most beautiful scheduling experience ever made.`,
-    imageFileName: 'timeline',
+    images: [ShotTimeline, ShotTimeline2x],
     maxWidth: 698,
     maxHeight: 390,
     IconComponent: Schedule
@@ -96,7 +107,7 @@ const tabs = [
   {
     title: `Teammates`,
     description: `A mix of quick to digest plans and smart suggestions for every colleague.`,
-    imageFileName: 'teammate',
+    images: [ShotTeammate, ShotTeammate2x],
     maxWidth: 668,
     maxHeight: 334,
     IconComponent: Teammate
@@ -104,7 +115,7 @@ const tabs = [
   {
     title: `Time and Places`,
     description: `Interactive. Visual. Quick. Exceptionally better than Googling.`,
-    imageFileName: 'time-and-place',
+    images: [ShotTimeAndPlace, ShotTimeAndPlace2x],
     maxWidth: 668,
     maxHeight: 334,
     IconComponent: TimeAndPlace
@@ -112,7 +123,7 @@ const tabs = [
   {
     title: `Office`,
     description: `Your office storey. Fastest way to have a look around the team.`,
-    imageFileName: 'team-floor',
+    images: [ShotOffice, ShotOffice2x],
     maxWidth: 689,
     maxHeight: 381,
     IconComponent: Office

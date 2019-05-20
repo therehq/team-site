@@ -27,6 +27,11 @@
     "semi": false
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.0"
+    "babel-plugin-styled-components": "^1.10.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^6.0.0",
+    "imagemin-webp": "^5.0.0",
+    "next-optimized-images": "^2.5.0",
+    "webp-loader": "^0.4.0"
   }
 }

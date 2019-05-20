@@ -68,7 +68,7 @@ const SectionImageTitle = styled.span`
 const TeamStoryImage = styled.div`
   width: 523px;
   height: 387px;
-  background: url('/static/team-feed.png');
+  background: url(${require('../static/team-feed.png')});
   background-size: cover;
 `
 

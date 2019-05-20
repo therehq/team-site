@@ -14,7 +14,10 @@ export const LastQuote = () => (
     <Space height={124} />
     <StyledWrapper>
       <LargeQuote>
-        <img src="/static/Chris.png" />
+        <img
+          src={require('../static/Chris.png')}
+          alt="Chris Messina Portrait"
+        />
         <div>
           <Space height={11} />
           <Quote>

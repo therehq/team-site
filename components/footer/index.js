@@ -152,7 +152,7 @@ const FooterLink = styled.a`
 const VideoThumbnail = styled.div`
   width: 186px;
   height: 115px;
-  background: url('../../static/footer/videoImage.jpg');
+  background: url(${require('../../static/footer/videoImage.jpg')});
   background-size: cover;
 
   border-radius: 3px;

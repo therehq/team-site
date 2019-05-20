@@ -10,19 +10,19 @@ export const StockPhotos = () => (
         height={110}
         borderRadius="0"
       />
-      <PhotoBox src="../../static/scheduling/3.jpg" width={95} />
-      <PhotoBox src="../../static/scheduling/2.jpg" width={78} />
-      <PhotoBox src="../../static/scheduling/1.jpg" width={128} />
+      <PhotoBox src={require('../../static/scheduling/3.jpg')} width={95} />
+      <PhotoBox src={require('../../static/scheduling/2.jpg')} width={78} />
+      <PhotoBox src={require('../../static/scheduling/1.jpg')} width={128} />
     </Row>
     <Row>
       <PhotoBox
-        src="../../static/scheduling/7.jpg"
+        src={require('../../static/scheduling/7.jpg')}
         width={108}
         marginRight={10}
       />
-      <PhotoBox src="../../static/scheduling/6.jpg" width={130} />
-      <PhotoBox src="../../static/scheduling/5.jpg" width={117} />
-      <PhotoBox src="../../static/scheduling/4.jpg" width={89} />
+      <PhotoBox src={require('../../static/scheduling/6.jpg')} width={130} />
+      <PhotoBox src={require('../../static/scheduling/5.jpg')} width={117} />
+      <PhotoBox src={require('../../static/scheduling/4.jpg')} width={89} />
     </Row>
   </Wrapper>
 )

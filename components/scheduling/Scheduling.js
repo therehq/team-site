@@ -41,7 +41,7 @@ export const Scheduling = () => (
       <SectionBox>
         <QuoteBox
           quote="This is absolutely brilliant. As an investor in companies like Remote Year and WeWork with massive, distributed teams, this is a no-brainer."
-          image="../../static/JesseMiddleton.jpg"
+          image={require('../../static/JesseMiddleton.jpg')}
           name="Jesse Middleton"
           status="Co-Founder, WeWork Labs"
           type="largeBox"

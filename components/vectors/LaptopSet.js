@@ -83,7 +83,7 @@ const DesktopAppImage = styled.div`
 
   transition: all 200ms;
 
-  background-image: url('../static/Home.jpg');
+  background-image: url(${require('../../static/Home.jpg')});
   background-size: cover;
   border-radius: 4px;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.13),

@@ -28,15 +28,15 @@ export const PeopleAvatars = () => (
       <Space height={28} />
 
       <Avatars>
-        <Avatar src="/static/people/avatar1.svg" />
-        <Avatar src="/static/people/avatar2.svg" />
-        <Avatar src="/static/people/avatar3.svg" />
-        <Avatar src="/static/people/avatar4.svg" />
-        <Avatar src="/static/people/avatar5.svg" />
-        <Avatar src="/static/people/avatar6.svg" />
-        <Avatar src="/static/people/avatar7.svg" />
-        <Avatar src="/static/people/avatar8.svg" />
-        <Avatar src="/static/people/avatar9.svg" />
+        <Avatar src="/static/people/avatar1.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar2.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar3.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar4.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar5.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar6.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar7.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar8.svg" alt="Person avatar" />
+        <Avatar src="/static/people/avatar9.svg" alt="Person avatar" />
         <ModalContext.Consumer>
           {({ setOpenState }) => (
             <CirclePlus onClick={() => setOpenState(true)} />
