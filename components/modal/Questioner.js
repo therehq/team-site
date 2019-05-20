@@ -7,28 +7,39 @@ import { Formik, Field, Form } from 'formik'
 import { openTwitterModal } from '../../utils/share'
 import { ModalContext } from './Context'
 import Space from '../shared/Space'
-import { MultiSelect } from './MutilSelect'
+import { MultiSelect } from './MultiSelect'
 
-export const Questioner = withRouter(
-  ({ setOpenState, setEmailState, defaultEmail, router }) => {
-    const { subscribed, setSubscribedState } = useContext(ModalContext)
-    const [mutation, executeMutation] = useMutation(AddSubscriber)
-    const addSubscriberHandler = async ({ fullName, company, email }) => {
-      setSubscribedState(true)
-      const res = await executeMutation({
-        fullName: fullName,
-        company: company,
-        email: email,
-        utmSource: router.query.utm_source,
-        utmMedium: router.query.utm_medium,
-        utmCampaign: router.query.utm_campaign
-      })
+export const Questioner = withRouter(({ router }) => {
+  const { email, questioner, setQuestionerState, setOpenState } = useContext(
+    ModalContext
+  )
+  const [mutation, executeMutation] = useMutation(AddSubscriber)
 
-      return res
+  const addSubscriberHandler = async ({
+    remoteTeam,
+    teamSize,
+    likelyToBuy
+  }) => {
+    if (remoteTeam == '' || teamSize == '' || likelyToBuy == '') {
+      return { error: { message: 'Looks like you forgot question' } }
     }
 
-    return (
-      <div>
+    const res = await executeMutation({
+      email: email,
+      surveyId: 'hwX6aOr7',
+      remoteTeam: remoteTeam,
+      teamSize: teamSize,
+      likelyToBuy: likelyToBuy
+    })
+
+    setQuestionerState(true)
+
+    return res
+  }
+
+  return (
+    <div>
+      {!questioner ? (
         <MessageWrapper>
           <Space height={15} />
 
@@ -57,8 +68,14 @@ export const Questioner = withRouter(
                 // successful
               }
             }}
-            render={({ errors, touched, isSubmitting, setFieldValue }) => (
-              <div>
+            render={({
+              errors,
+              touched,
+              isSubmitting,
+              setFieldValue,
+              values
+            }) => (
+              <Form>
                 <InputLabel>
                   Are you a remote team?
                   <MultiSelect
@@ -71,6 +88,7 @@ export const Questioner = withRouter(
                     onChange={e => {
                       setFieldValue('remoteTeam', e)
                     }}
+                    value={values.remoteTeam}
                   />
                 </InputLabel>
                 <Separator />
@@ -82,6 +100,7 @@ export const Questioner = withRouter(
                     onChange={e => {
                       setFieldValue('teamSize', e)
                     }}
+                    value={values.teamSize}
                   />
                 </InputLabel>
                 <Separator />
@@ -98,37 +117,57 @@ export const Questioner = withRouter(
                     onChange={e => {
                       setFieldValue('likelyToBuy', e)
                     }}
+                    value={values.likelyToBuy}
                   />
                 </InputLabel>
+                {errors.email && (
+                  <Error>{errors.email.replace('[GraphQL]', '')}</Error>
+                )}
                 <Center>
-                  <Button type="submit">Submit</Button>
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Adding...' : 'Submit'}
+                  </Button>
                 </Center>
-              </div>
+              </Form>
             )}
           />
         </MessageWrapper>
-      </div>
-    )
-  }
-)
+      ) : (
+        <MessageWrapper>
+          <Space height={15} />
+
+          <Title align="center">Thanks for answering last questions </Title>
+          <Subtitle align="center">
+            There are {620 + 0} people ahead, by sharing you'll get access
+          </Subtitle>
+          <Space height={20} />
+
+          <Center>
+            <SecondaryButton onClick={() => setOpenState(false)}>
+              Close
+            </SecondaryButton>
+            <Button onClick={() => openTwitterModal()}>Tweet!</Button>
+          </Center>
+        </MessageWrapper>
+      )}
+    </div>
+  )
+})
 
 const AddSubscriber = `#graphql
   mutation(
     $email: String!
-    $fullName: String
-    $company: String
-    $utmSource: String
-    $utmMedium: String
-    $utmCampaign: String
+    $surveyId: String!
+    $remoteTeam: String!
+    $teamSize: String!
+    $likelyToBuy: String!
   ) {
-    addSubscriber(
+    addResponses(
       email: $email
-      fullName: $fullName
-      company: $company
-      utmSource: $utmSource
-      utmMedium: $utmMedium
-      utmCampaign: $utmCampaign
-      newsletterLevel: PreLaunch
+      surveyId: $surveyId
+      remoteTeam: $remoteTeam
+      teamSize: $teamSize
+      likelyToBuy: $likelyToBuy
     )
   }
 `
