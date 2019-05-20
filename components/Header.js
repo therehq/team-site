@@ -22,7 +22,7 @@ export const Header = () => (
       <LaptopSet />
 
       <Space height={50} />
-      <SectionHeading>
+      <SectionHeading smallOnMobile>
         The base for collaborating clearly & smoothly in remote teams
       </SectionHeading>
 

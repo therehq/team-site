@@ -18,7 +18,7 @@ export const Footer = () => {
   const { setOpenState } = useContext(ModalContext)
 
   return (
-    <NarrowContainer>
+    <NarrowContainer style={{ overflow: 'visible' }}>
       <Space height={172} />
       <StyledWrapper>
         <Column>
