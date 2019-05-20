@@ -26,10 +26,10 @@ export const TeamStory = () => (
         </SectionHeading>
         <Space height={16} />
 
-        <SectionSubtitle align="left" maxWidth={489}>
-          There is particularly designed to convey co-presence. Team Story
-          feature intelligently transfers the positive sense of working together
-          in a team. It’s beyond plain avatars.
+        <SectionSubtitle align="left" maxWidth={495}>
+          <strong>There</strong> is particularly designed to convey co-presence.
+          Team Feed intelligently transfers the positive sense of working
+          together in a team. It’s beyond plain avatars.
         </SectionSubtitle>
       </SectionData>
     </StyledWrapper>
@@ -55,7 +55,7 @@ const SectionImage = styled.div`
 `
 
 const SectionImageTitle = styled.span`
-  margin-top: -15px;
+  margin-top: -25px;
   font-family: ${p => p.theme.fontText};
   font-size: 18px;
   font-style: italic;
@@ -68,7 +68,7 @@ const SectionImageTitle = styled.span`
 const TeamStoryImage = styled.div`
   width: 523px;
   height: 387px;
-  background: url('../static/teamStroy.png');
+  background: url('/static/team-feed.png');
   background-size: cover;
 `
 

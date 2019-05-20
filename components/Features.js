@@ -45,8 +45,8 @@ export const Features = () => (
           Import from Slack or Twist.
         </FeatureTitle>
         <SectionSubtitle maxWidth={328} top={8}>
-          Connect your Slack or Twist workspace in one click and start using
-          There.
+          Connect your Slack or Twist workspace in one click and start using{' '}
+          <strong>There</strong>.
         </SectionSubtitle>
       </FeatureItem>
 

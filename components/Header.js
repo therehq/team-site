@@ -46,10 +46,10 @@ export const Header = () => (
 
       <Space height={23} />
       <SectionSubtitle>
-        The age of remote-first companies has unique requirements. There is the
-        missing half of our communication tools. A new paradigm for helping with
-        scheduling and time differences. Providing the foundation to work
-        together remotely, smoothly and closely.
+        The age of remote-first companies has unique requirements.{' '}
+        <strong>There</strong> is the missing half of our communication tools. A
+        new paradigm for helping with scheduling and time differences. Providing
+        the foundation to work together remotely, smoothly and closely.
       </SectionSubtitle>
       <Space height={114} />
     </StyledWrapper>
