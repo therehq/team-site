@@ -1,5 +1,6 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { mobile } from '../style/mobile'
 
 export const SectionHeading = styled.h1`
   margin: 0;
@@ -14,4 +15,10 @@ export const SectionHeading = styled.h1`
   text-align: ${p => (p.align ? p.align : 'center')};
 
   color: ${p => p.theme.black2};
+
+  ${p =>
+    p.smallOnMobile &&
+    mobile(css`
+      font-size: ${p => p.theme.fontLarge32}px;
+    `)}
 `

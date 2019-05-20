@@ -90,10 +90,21 @@ export const RequestAccessForm = withRouter(
                     <Error>{errors.email.replace('[GraphQL]', '')}</Error>
                   )}
                   <Space height={20} />
-
-                  <Button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Adding...' : 'Request Access'}
-                  </Button>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <SecondaryButton
+                      style={{ marginRight: 18 }}
+                      onClick={() => setOpenState(false)}
+                    >
+                      Close
+                    </SecondaryButton>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      style={{ margin: 0 }}
+                    >
+                      {isSubmitting ? 'Adding...' : 'Request Access'}
+                    </Button>
+                  </div>
                 </Form>
               )}
             />

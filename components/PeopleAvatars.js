@@ -19,7 +19,7 @@ export const PeopleAvatars = () => (
     <Space height={52} />
 
     <StyledWrapper>
-      <SectionHeading>
+      <SectionHeading smallOnMobile={true}>
         <GrayColorText>There starts at time zones,</GrayColorText>
         <br />
         However, it’s about people.

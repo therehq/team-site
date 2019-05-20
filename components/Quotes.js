@@ -89,17 +89,16 @@ export class Quotes extends Component {
 
 const StyledWrapper = styled(Wrapper)`
   display: grid;
-  grid-template-columns: 20px auto 20px;
+  grid-template-columns: 20px 1fr 20px;
   align-items: center;
-  grid-column-gap: 43px;
+  grid-column-gap: 420px;
 
   ${mobile(css`
-    grid-column-gap: 5px;
+    grid-column-gap: 0;
   `)}
 `
 
 const QuotesSlider = styled.div`
-  width: 100%;
   padding: 20px 0;
 
   display: flex;
