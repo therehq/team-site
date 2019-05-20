@@ -79,8 +79,14 @@ const LargeQuote = styled.div`
     grid-template-columns: auto;
     grid-column-gap: 0;
     align-content: center;
+    * {
+      text-align: center;
+    }
+    img {
+      margin: 0 auto;
+    }
     justify-content: center;
-    margin-left: -12px;
+    margin-left: 0;
   }
 `
 
