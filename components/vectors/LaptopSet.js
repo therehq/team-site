@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import { Square, Triangle, MultiCircles, HalfCircle } from './Shapes'
 import { Laptop } from './Laptop'
 import { mobile } from '../style/mobile'
+import posed from 'react-pose'
 
 export const LaptopSet = () => (
   <Wrapper>
@@ -71,13 +72,15 @@ const LaptopWrapper = styled.div`
   }
 `
 
-const DesktopAppImage = styled.div`
+const DraggableDiv = posed.div({
+  draggable: true,
+})
+
+const DesktopAppImage = styled(DraggableDiv)`
   width: 47.1%;
   height: 41.8%;
   top: 27%;
   left: 27%;
-
-  transition: all 200ms;
 
   background-image: url(${require('../../static/Home.jpg')});
   background-size: cover;
