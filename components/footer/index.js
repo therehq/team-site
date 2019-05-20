@@ -25,21 +25,21 @@ export const Footer = () => {
           <ThereLogo />
           <Space height={23} />
 
-          <span>Follow our team</span>
+          <span>Follow our Team</span>
           <Space height={11} />
 
           <Socials>
+            <a href="https://twitter.com/therehq">
+              <Twitter />
+            </a>
             <a href="https://angel.co/company/therepm">
               <AngleList />
-            </a>
-            <a href="https://dribbble.com/morajabi">
-              <Dribbble />
             </a>
             <a href="https://dribbble.com/therehq">
               <Github />
             </a>
-            <a href="https://twitter.com/therehq">
-              <Twitter />
+            <a href="https://dribbble.com/morajabi">
+              <Dribbble />
             </a>
           </Socials>
           <Space height={19} />
@@ -51,35 +51,44 @@ export const Footer = () => {
           <FooterLink onClick={() => setOpenState(true)}>
             Request Access
           </FooterLink>
-          <FooterLink href="mailto:mo@there.pm">Feedback</FooterLink>
-          <FooterLink href="#">Help</FooterLink>
-          <FooterLink href="#">FAQ</FooterLink>
+          <FooterLink
+            onClick={() => {
+              $crisp.push(['do', 'chat:open'])
+            }}
+          >
+            Chat with Us
+          </FooterLink>
+          <FooterLink href="mailto:mo@there.pm">Email Us</FooterLink>
+          <FooterLink href="https://www.notion.so/there/FAQ-54dd39b2b18442aa8530ce73dc0b13a6">
+            FAQ
+          </FooterLink>
         </Column>
         <Column>
           <ColTitle>Company</ColTitle>
           <FooterLink href="https://twitter.com/therehq">About us</FooterLink>
-          <FooterLink href="https://morajabi.im/blog">Blog</FooterLink>
+          {/* <FooterLink href="https://morajabi.im/blog">Blog</FooterLink> */}
           {/* <FooterLink href="#">Press</FooterLink> */}
-          <FooterLink href="https://there.pm">There Personal </FooterLink>
+          <FooterLink href="https://there.pm">There Personal</FooterLink>
         </Column>
         <Column>
           <ColTitle>1 Minute Video</ColTitle>
-          <VideoWrapper>
-            <VideoThumbnail />
-            <SoonWrapper>Soon!</SoonWrapper>
-            <SignWrapper>
-              <OurSign />
-            </SignWrapper>
-          </VideoWrapper>
+          <a href="https://youtu.be/OBnY5R3A8Mk" target="_blank">
+            <VideoWrapper>
+              <VideoThumbnail />
+              <SignWrapper>
+                <OurSign />
+              </SignWrapper>
+            </VideoWrapper>
+          </a>
         </Column>
         <Column>
           <ColTitle>Team</ColTitle>
 
-          <FooterLink href="https://angel.co/company/therepm">
+          <FooterLink href="https://www.notion.so/there/Meet-the-Team-42ec8e5423af4a3dbab478e7c3c8ff45">
             Meet the team
           </FooterLink>
           <FooterLink href="https://angel.co/company/therepm">
-            Join us!
+            Open Positions
           </FooterLink>
         </Column>
       </StyledWrapper>
@@ -161,7 +170,7 @@ const VideoThumbnail = styled.div`
   filter: saturate(0);
   transition: all 200ms;
   /* cursor: pointer; */
-  cursor: default;
+  cursor: pointer;
 
   border-color: #490b5f;
   border-left: solid 2px;
@@ -169,9 +178,9 @@ const VideoThumbnail = styled.div`
   border-bottom: solid 4px;
   border-right: solid 4px;
 
-  /* :hover {
+  :hover {
     filter: saturate(1);
-  } */
+  }
 `
 
 const SignWrapper = styled.div`

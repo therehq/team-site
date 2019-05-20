@@ -50,7 +50,7 @@ const Home = () => {
           <TeamStory />
           <Features2 />
           <Press />
-          <OurBlog />
+          {/* <OurBlog /> */}
           <LastQuote />
           <Footer />
 
