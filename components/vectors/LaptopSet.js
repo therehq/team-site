@@ -72,11 +72,7 @@ const LaptopWrapper = styled.div`
 `
 
 const DesktopAppImage = styled.div`
-  /* width: 330px;
-  height: 170px; 
-  top: 118px;
-  left: 191px; */
-  width: 46.2%;
+  width: 47.1%;
   height: 41.8%;
   top: 27%;
   left: 27%;
@@ -85,7 +81,8 @@ const DesktopAppImage = styled.div`
 
   background-image: url(${require('../../static/Home.jpg')});
   background-size: cover;
-  border-radius: 4px;
+  border-radius: 6px;
+  overflow: hidden;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.13),
     0px 0px 12px rgba(0, 0, 0, 0.14);
 
