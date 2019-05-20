@@ -43,7 +43,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>There — Remote Teams' Home</title>
           <link
             href="https://fonts.googleapis.com/css?family=Alegreya+Sans:800|IBM+Plex+Sans:400,400i,600"
             rel="stylesheet"
