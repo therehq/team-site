@@ -7,6 +7,7 @@ export const ModalProvider = ({ children }) => {
   const [isOpen, setOpenState] = useState(false)
   const [email, setEmailState] = useState('')
   const [subscribed, setSubscribedState] = useState(false)
+  const [questioner, setQuestionerState] = useState(false)
 
   return (
     <ModalContext.Provider
@@ -16,7 +17,9 @@ export const ModalProvider = ({ children }) => {
         email,
         setEmailState,
         subscribed,
-        setSubscribedState
+        setSubscribedState,
+        questioner,
+        setQuestionerState
       }}
     >
       {children}

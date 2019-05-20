@@ -7,13 +7,17 @@ import { Formik, Field, Form } from 'formik'
 import { openTwitterModal } from '../../utils/share'
 import { ModalContext } from '../modal/Context'
 import Space from '../shared/Space'
+import { Questioner } from './Questioner'
 
 export const RequestAccessForm = withRouter(
-  ({ setOpenState, setEmailState, defaultEmail, router }) => {
-    const { subscribed, setSubscribedState } = useContext(ModalContext)
+  ({ setOpenState, defaultEmail, router }) => {
+    const { subscribed, setSubscribedState, setEmailState } = useContext(
+      ModalContext
+    )
     const [mutation, executeMutation] = useMutation(AddSubscriber)
     const addSubscriberHandler = async ({ fullName, company, email }) => {
-      setSubscribedState(true)
+      setEmailState(email)
+
       const res = await executeMutation({
         fullName: fullName,
         company: company,
@@ -22,6 +26,7 @@ export const RequestAccessForm = withRouter(
         utmMedium: router.query.utm_medium,
         utmCampaign: router.query.utm_campaign
       })
+      setSubscribedState(true)
 
       return res
     }
@@ -94,22 +99,7 @@ export const RequestAccessForm = withRouter(
             />
           </>
         ) : (
-          <MessageWrapper>
-            <Space height={15} />
-
-            <Title align="center">You’re on the waitlist! 🎉</Title>
-            <Subtitle align="center">
-              There are {620 + 0} people ahead, by sharing you'll get access
-            </Subtitle>
-            <Space height={20} />
-
-            <Center>
-              <SecondaryButton onClick={() => setOpenState(false)}>
-                Close
-              </SecondaryButton>
-              <Button onClick={() => openTwitterModal()}>Tweet!</Button>
-            </Center>
-          </MessageWrapper>
+          <Questioner />
         )}
       </div>
     )

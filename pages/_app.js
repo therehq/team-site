@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import App, { Container } from 'next/app'
+import Head from 'next/head'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { styledTheme } from '../utils/theme'
 
