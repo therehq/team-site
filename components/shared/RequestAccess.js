@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // local
 import { ModalContext } from '../modal/Context'
 import { RequestAccessForm } from '../modal'
+import { mediaMaxWidth } from '../style/mobile'
 
 export const RequestAccess = () => {
   const { isOpen, setOpenState, setEmailState } = useContext(ModalContext)
@@ -30,6 +31,13 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  ${mediaMaxWidth(500)(css`
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  `)};
+
   background: #ffffff;
   border: 1px solid #699ad4;
   box-sizing: border-box;
@@ -41,6 +49,7 @@ const RequestButton = styled.button`
   height: 40px;
   border: none;
   outline: none;
+  white-space: nowrap;
 
   font-family: ${p => p.theme.fontText};
   font-style: normal;
@@ -49,6 +58,14 @@ const RequestButton = styled.button`
   font-size: 16px;
   line-height: 1.125;
   color: #ffffff;
+  display: block;
+
+  ${mediaMaxWidth(500)(css`
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  `)};
 
   background: #1c84ff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.09);
@@ -65,6 +82,14 @@ const InputBox = styled.input`
   margin-left: 15px;
   display: block;
   width: 220px;
+
+  ${mediaMaxWidth(500)(css`
+    padding-left: 12px;
+    margin-left: 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+  `)};
 
   border: none;
   outline: none;

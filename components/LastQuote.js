@@ -80,6 +80,7 @@ const LargeQuote = styled.div`
     grid-column-gap: 0;
     align-content: center;
     justify-content: center;
+    margin-left: -12px;
   }
 `
 
