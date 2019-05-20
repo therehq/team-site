@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import App, { Container } from 'next/app'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { styledTheme } from '../utils/theme'
@@ -19,6 +20,35 @@ class MyApp extends App {
 
     return (
       <Container>
+        <Head>
+          <title>There — Clearer, smoother remote work</title>
+
+          {/* Favicons */}
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/favicons/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/favicons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/favicons/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/static/favicons/site.webmanifest" />
+          <link
+            rel="icon"
+            type="image/x-icon"
+            href="/static/favicons/favicon.ico"
+          />
+        </Head>
+
         <ThemeProvider theme={styledTheme}>
           <>
             <GlobalStyle />

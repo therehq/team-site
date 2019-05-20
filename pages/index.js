@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { createClient, Provider } from 'urql'
 
 import { ModalProvider } from '../components/modal/Context'
@@ -27,26 +28,36 @@ const client = createClient({
 
 const Home = () => {
   return (
-    <Provider value={client}>
-      <ModalProvider>
-        <ThereNews />
-        <Header />
-        <OurCustomers />
-        <Screenshots />
-        <Scheduling />
-        <Features />
-        <PeopleAvatars />
-        <Quotes />
-        <TeamStory />
-        <Features2 />
-        <Press />
-        <OurBlog />
-        <LastQuote />
-        <Footer />
+    <>
+      <Head>
+        <meta name="title" content="There: Clearer, smoother remote work" />
+        <meta
+          name="description"
+          content="Beyond traditional remote working. There solves scheduling and collaboration across timezones. Request early access for your distributed team."
+        />
+        <meta charset="utf-8" />
+      </Head>
+      <Provider value={client}>
+        <ModalProvider>
+          <ThereNews />
+          <Header />
+          <OurCustomers />
+          <Screenshots />
+          <Scheduling />
+          <Features />
+          <PeopleAvatars />
+          <Quotes />
+          <TeamStory />
+          <Features2 />
+          <Press />
+          <OurBlog />
+          <LastQuote />
+          <Footer />
 
-        <Space height={86} />
-      </ModalProvider>
-    </Provider>
+          <Space height={86} />
+        </ModalProvider>
+      </Provider>
+    </>
   )
 }
 
