@@ -41,13 +41,18 @@ export const TopShare = () => {
           <span>Share the link with your team</span>
         </ShareItem>
 
-        {isTeamPopupOpen && <CopyLinkPopup firstInputRef={teamInputRef} />}
+        {isTeamPopupOpen && (
+          <CopyLinkPopup
+            firstInputRef={teamInputRef}
+            close={() => setTeamPopupIsOpen(false)}
+          />
+        )}
       </ItemWrapper>
     </Wrapper>
   )
 }
 
-export const CopyLinkPopup = ({ firstInputRef }) => {
+export const CopyLinkPopup = ({ firstInputRef, close }) => {
   return (
     <Popup>
       <Formik
@@ -94,7 +99,14 @@ export const CopyLinkPopup = ({ firstInputRef }) => {
               />
             </InputLabel>
             <Buttons>
-              <SecondaryButton style={{ padding: 6 }}>Close</SecondaryButton>
+              <SecondaryButton
+                style={{ padding: 6 }}
+                onClick={() => {
+                  close()
+                }}
+              >
+                Close
+              </SecondaryButton>
 
               <SecondaryButton
                 style={{ padding: 6 }}

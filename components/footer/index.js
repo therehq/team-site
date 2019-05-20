@@ -68,6 +68,9 @@ export const Footer = () => {
           <FooterLink href="https://twitter.com/therehq">About us</FooterLink>
           {/* <FooterLink href="https://morajabi.im/blog">Blog</FooterLink> */}
           {/* <FooterLink href="#">Press</FooterLink> */}
+          <FooterLink href="https://spectrum.chat/there">
+            Join Our Community
+          </FooterLink>
           <FooterLink href="https://there.pm">There Personal</FooterLink>
         </Column>
         <Column>
