@@ -1,13 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
 import { useMutation } from 'urql'
 import { Formik, Field, Form } from 'formik'
+import OutsideClickHandler from 'react-outside-click-handler'
+import debounce from 'just-debounce'
 
 import { openTwitterModal } from '../../utils/share'
 import { ModalContext } from '../modal/Context'
 import Space from '../shared/Space'
 import { Questioner } from './Questioner'
+import {
+  AutoCompleteWrapper,
+  Results,
+  ResultItem,
+  CoLogo
+} from './AutoComplete'
 
 export const RequestAccessForm = withRouter(
   ({ setOpenState, defaultEmail, router }) => {
@@ -31,6 +39,28 @@ export const RequestAccessForm = withRouter(
       return res
     }
 
+    const companyValue = useRef('')
+    const [showCompanyDropdown, setCompanyDropdownOpen] = useState(false)
+    const [companies, setCompanies] = useState([])
+    const triggerCompanyFetch = debounce(async value => {
+      let result = await fetch(
+        `https://autocomplete.clearbit.com/v1/companies/suggest?query=${encodeURI(
+          value
+        )}`
+      )
+
+      if (result.ok && value === companyValue.current) {
+        result = await result.json()
+        setCompanies(result)
+        setCompanyDropdownOpen(true)
+      } else {
+        setCompanies([])
+        setCompanyDropdownOpen(false)
+      }
+    }, 60)
+
+    const companyBlurred = () => {}
+
     return (
       <div>
         {!subscribed ? (
@@ -42,7 +72,9 @@ export const RequestAccessForm = withRouter(
               initialValues={{
                 fullName: '',
                 company: '',
-                email: defaultEmail
+                companyLogo: null,
+                email: defaultEmail,
+                showCompanyDropdown: false
               }}
               onSubmit={async (values, { props, setSubmitting, setErrors }) => {
                 const result = await addSubscriberHandler(values)
@@ -54,7 +86,13 @@ export const RequestAccessForm = withRouter(
                   // successful
                 }
               }}
-              render={({ errors, touched, isSubmitting }) => (
+              render={({
+                values,
+                errors,
+                touched,
+                isSubmitting,
+                setFieldValue
+              }) => (
                 <Form>
                   <Row>
                     <InputLabel>
@@ -69,11 +107,52 @@ export const RequestAccessForm = withRouter(
                   <Row>
                     <InputLabel>
                       Team name
-                      <Input
-                        type="text"
-                        name="company"
-                        placeholder="Type your team name here"
-                      />
+                      <OutsideClickHandler
+                        onOutsideClick={() => setCompanyDropdownOpen(false)}
+                      >
+                        <AutoCompleteWrapper>
+                          <Input
+                            type="text"
+                            name="company"
+                            placeholder="Type your company domain..."
+                            onChange={e => {
+                              const value = e.currentTarget.value
+                              companyValue.current = value
+                              setFieldValue('company', value)
+                              triggerCompanyFetch(value)
+                            }}
+                            onBlur={companyBlurred}
+                          />
+                          {values.companyLogo && (
+                            <CoLogo
+                              src={values.companyLogo}
+                              style={{
+                                position: 'absolute',
+                                right: 8,
+                                top: 6
+                              }}
+                            />
+                          )}
+                          {showCompanyDropdown && companies && (
+                            <Results>
+                              {companies.map((co, i) => (
+                                <ResultItem
+                                  key={co.name + i}
+                                  onClick={() => {
+                                    console.log(co.name)
+                                    setFieldValue('company', co.name)
+                                    setFieldValue('companyLogo', co.logo)
+                                    setCompanyDropdownOpen(false)
+                                  }}
+                                >
+                                  <CoLogo src={co.logo} />
+                                  {co.name} - {co.domain}
+                                </ResultItem>
+                              ))}
+                            </Results>
+                          )}
+                        </AutoCompleteWrapper>
+                      </OutsideClickHandler>
                     </InputLabel>
                   </Row>
                   <Row>
