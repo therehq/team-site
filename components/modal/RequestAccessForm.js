@@ -73,7 +73,7 @@ export const RequestAccessForm = withRouter(
             <Formik
               initialValues={{
                 fullName: '',
-                company: '',
+                company: router.query.team || '',
                 companyLogo: null,
                 email: defaultEmail,
                 showCompanyDropdown: false
@@ -151,7 +151,9 @@ export const RequestAccessForm = withRouter(
                                 >
                                   <CoLogo src={co.logo} />
                                   {co.name}
-                                  <small style={{ marginLeft: 4 }}>
+                                  <small
+                                    style={{ marginLeft: 4, opacity: 0.8 }}
+                                  >
                                     — {co.domain}{' '}
                                   </small>
                                 </ResultItem>
