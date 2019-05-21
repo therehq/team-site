@@ -54,7 +54,6 @@ export const RequestAccessForm = withRouter(
       } catch (err) {
         if (String(err).includes('Resource blocked')) {
         } else {
-          Sentry.captureException(err)
           return
         }
       }
