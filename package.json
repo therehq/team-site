@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@reach/dialog": "^0.2.8",
+    "@sentry/browser": "^5.2.1",
     "@svgr/webpack": "^4.2.0",
     "@zeit/next-css": "^1.0.1",
     "formik": "^1.5.4",

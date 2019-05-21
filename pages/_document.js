@@ -13,6 +13,10 @@ export const heapScript = `
   });
 `
 
+export const sentry = `
+Sentry.init({ dsn: 'https://70c5f782f9864c95860ece5b280718d4@sentry.io/1464032' });
+`
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
@@ -54,6 +58,16 @@ class MyDocument extends Document {
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{ __html: crispScript }}
+          />
+          <script
+            type="text/javascript"
+            src="https://unpkg.com/@sentry/browser@5.2.1/build/bundle.min.js"
+            defer="defer"
+          />
+          <script
+            type="text/javascript"
+            defer="defer"
+            dangerouslySetInnerHTML={{ __html: sentry }}
           />
         </Head>
         <body className="custom_class">

@@ -149,6 +149,11 @@ export const RequestAccessForm = withRouter(
                                   {co.name} - {co.domain}
                                 </ResultItem>
                               ))}
+                              <ResultItem
+                                onClick={() => setCompanyDropdownOpen(false)}
+                              >
+                                {values.company}
+                              </ResultItem>
                             </Results>
                           )}
                         </AutoCompleteWrapper>

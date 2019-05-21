@@ -3,6 +3,7 @@ import App, { Container } from 'next/app'
 import Head from 'next/head'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { styledTheme } from '../utils/theme'
+import { ExampleBoundary } from '../components/Sentry'
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -49,12 +50,14 @@ class MyApp extends App {
           />
         </Head>
 
-        <ThemeProvider theme={styledTheme}>
-          <>
-            <GlobalStyle />
-            <Component {...pageProps} />
-          </>
-        </ThemeProvider>
+        <ExampleBoundary>
+          <ThemeProvider theme={styledTheme}>
+            <>
+              <GlobalStyle />
+              <Component {...pageProps} />
+            </>
+          </ThemeProvider>
+        </ExampleBoundary>
       </Container>
     )
   }
