@@ -55,10 +55,11 @@ export const RequestAccessForm = withRouter(
         if (String(err).includes('Resource blocked')) {
         } else {
           Sentry.captureException(err)
+          return
         }
       }
 
-      if (result.ok && value === companyValue.current) {
+      if (result && result.ok && value === companyValue.current) {
         result = await result.json()
         setCompanies(result)
         setCompanyDropdownOpen(true)
