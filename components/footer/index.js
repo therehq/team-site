@@ -65,7 +65,9 @@ export const Footer = () => {
         </Column>
         <Column>
           <ColTitle>Company</ColTitle>
-          <FooterLink href="https://twitter.com/therehq">About us</FooterLink>
+          <FooterLink href="https://www.notion.so/there/About-Us-05b0c57810e749a2a57919f814940ae6">
+            About us
+          </FooterLink>
           {/* <FooterLink href="https://morajabi.im/blog">Blog</FooterLink> */}
           {/* <FooterLink href="#">Press</FooterLink> */}
           <FooterLink href="https://spectrum.chat/there">

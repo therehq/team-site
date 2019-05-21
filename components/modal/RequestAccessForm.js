@@ -5,6 +5,7 @@ import { useMutation } from 'urql'
 import { Formik, Field, Form } from 'formik'
 import OutsideClickHandler from 'react-outside-click-handler'
 import debounce from 'just-debounce'
+import * as Sentry from '@sentry/browser'
 
 import { openTwitterModal } from '../../utils/share'
 import { ModalContext } from '../modal/Context'
@@ -43,11 +44,19 @@ export const RequestAccessForm = withRouter(
     const [showCompanyDropdown, setCompanyDropdownOpen] = useState(false)
     const [companies, setCompanies] = useState([])
     const triggerCompanyFetch = debounce(async value => {
-      let result = await fetch(
-        `https://autocomplete.clearbit.com/v1/companies/suggest?query=${encodeURI(
-          value
-        )}`
-      )
+      let result
+      try {
+        result = await fetch(
+          `https://autocomplete.clearbit.com/v1/companies/suggest?query=${encodeURI(
+            value
+          )}`
+        )
+      } catch (err) {
+        if (String(err).includes('Resource blocked')) {
+        } else {
+          Sentry.captureException(err)
+        }
+      }
 
       if (result.ok && value === companyValue.current) {
         result = await result.json()
@@ -59,9 +68,6 @@ export const RequestAccessForm = withRouter(
     }, 60)
 
     const companyBlurred = () => {}
-    const companyFocused = () => {
-      setCompanyDropdownOpen(true)
-    }
 
     return (
       <div>
@@ -75,6 +81,7 @@ export const RequestAccessForm = withRouter(
                 fullName: '',
                 company: router.query.team || '',
                 companyLogo: null,
+                companyPicked: Boolean(router.query.team),
                 email: defaultEmail,
                 showCompanyDropdown: false
               }}
@@ -85,7 +92,12 @@ export const RequestAccessForm = withRouter(
                 if (result.error) {
                   setErrors({ email: result.error.message })
                 } else {
-                  // successful
+                  if (values.email.includes('@')) {
+                    // successful
+                    Sentry.configureScope(scope => {
+                      scope.setUser({ email: values.email })
+                    })
+                  }
                 }
               }}
               render={({
@@ -125,7 +137,12 @@ export const RequestAccessForm = withRouter(
                               triggerCompanyFetch(value)
                             }}
                             onBlur={companyBlurred}
-                            onFocus={companyFocused}
+                            onFocus={() => {
+                              // Hasn't picked
+                              if (!values.companyPicked) {
+                                setCompanyDropdownOpen(true)
+                              }
+                            }}
                           />
                           {values.companyLogo && (
                             <CoLogo
@@ -143,9 +160,9 @@ export const RequestAccessForm = withRouter(
                                 <ResultItem
                                   key={co.name + i}
                                   onClick={() => {
-                                    console.log(co.name)
                                     setFieldValue('company', co.name)
                                     setFieldValue('companyLogo', co.logo)
+                                    setFieldValue('companyPicked', true)
                                     setCompanyDropdownOpen(false)
                                   }}
                                 >
@@ -160,7 +177,10 @@ export const RequestAccessForm = withRouter(
                               ))}
                               {values.company && values.company.length > 1 && (
                                 <ResultItem
-                                  onClick={() => setCompanyDropdownOpen(false)}
+                                  onClick={() => {
+                                    setFieldValue('companyPicked', true)
+                                    setCompanyDropdownOpen(false)
+                                  }}
                                 >
                                   {values.company}
                                 </ResultItem>
@@ -175,7 +195,7 @@ export const RequestAccessForm = withRouter(
                     <InputLabel>
                       Your email
                       <Input
-                        type="text"
+                        type="email"
                         name="email"
                         placeholder="Type your work email"
                       />
