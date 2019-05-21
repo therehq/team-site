@@ -63,21 +63,25 @@ export const Screenshots = () => {
           <Slides>
             <SlideItem>
               <BgWrapper>
-                <PoseGroup enterPose="shown" preEnterPose="hidden">
+                {/* <PoseGroup enterPose="shown" preEnterPose="hidden"> */}
+                {tabs.map((tab, i) => (
                   <PosedDesktopAppImage
-                    key={activeTab.title}
+                    initialPose="hidden"
+                    pose={i === activeTabInd ? 'shown' : 'hidden'}
+                    key={tab.title}
                     style={{
-                      maxWidth: activeTab.maxWidth,
-                      maxHeight: activeTab.maxHeight
+                      maxWidth: tab.maxWidth,
+                      maxHeight: tab.maxHeight
                     }}
                   >
                     <img
-                      src={activeTab.images[0]}
-                      srcSet={`${activeTab.images[1]} 2x`}
-                      alt={activeTab.title}
+                      src={tab.images[0]}
+                      srcSet={`${tab.images[1]} 2x`}
+                      alt={tab.title}
                     />
                   </PosedDesktopAppImage>
-                </PoseGroup>
+                ))}
+                {/* </PoseGroup> */}
               </BgWrapper>
             </SlideItem>
           </Slides>
@@ -245,6 +249,16 @@ const DesktopAppImage = styled.div`
   overflow: hidden;
   opacity: 0;
   transform: translateY(-15px);
+  display: none;
+  position: absolute;
+  z-index: 1;
+
+  ${mobile(
+    css`
+      top: 10px;
+      position: relative;
+    `
+  )}
 
   img {
     width: 100%;
@@ -255,19 +269,31 @@ const DesktopAppImage = styled.div`
 const PosedDesktopAppImage = posed(DesktopAppImage)({
   shown: {
     y: 0,
-    opacity: 1
+    opacity: 1,
+    applyAtStart: { display: 'block', zIndex: 3 },
+    applyAtEnd: { opacity: 1 }
   },
-  hidden: { opacity: 0.85, y: -15 }
+  hidden: {
+    applyAtEnd: { display: 'none' },
+    opacity: 0.2,
+    y: -20,
+    transition: {
+      duration: 100,
+      ease: 'easeOut'
+    }
+  }
 })
 
 const BgWrapper = styled.div`
   max-width: 750px;
   margin-left: auto;
   width: 100%;
-  height: 100%;
+  height: auto;
+  padding-bottom: 20px;
   background: url('../../static/bgSlider.svg') no-repeat;
   background-size: 100% auto;
 
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

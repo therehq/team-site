@@ -59,6 +59,7 @@ const RequestButton = styled.button`
   line-height: 1.125;
   color: #ffffff;
   display: block;
+  margin-right: 0;
 
   ${mediaMaxWidth(500)(css`
     width: 100%;
