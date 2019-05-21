@@ -35,6 +35,19 @@ const Home = () => {
           name="description"
           content="Beyond traditional remote working. There solves scheduling and collaboration across timezones. Request early access for your distributed team."
         />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ThereHQ" />
+        <meta name="twitter:creator" content="@morajabi" />
+        <meta name="og:title" content="There: Clearer, smoother remote work" />
+        <meta
+          name="og:description"
+          content="Beyond traditional remote working. There solves scheduling and collaboration across timezones. Request early access for your distributed team."
+        />
+        <meta property="og:url" content="https://there.team" />
+        <meta
+          name="og:image"
+          content="https://there.team/static/twitter-social.jpg"
+        />
         <meta charSet="utf-8" />
       </Head>
       <Provider value={client}>

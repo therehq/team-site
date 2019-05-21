@@ -63,7 +63,7 @@ const LaptopWrapper = styled.div`
   transition: all 200ms;
 
   ${mobile(css`
-    width: 500px;
+    width: 420px;
   `)};
 
   svg {
@@ -73,7 +73,7 @@ const LaptopWrapper = styled.div`
 `
 
 const DraggableDiv = posed.div({
-  draggable: true,
+  draggable: true
 })
 
 const DesktopAppImage = styled(DraggableDiv)`

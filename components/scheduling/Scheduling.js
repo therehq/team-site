@@ -12,7 +12,7 @@ import { QuoteBox } from '../shared/QuoteBox'
 import { mobile } from '../style/mobile'
 
 export const Scheduling = () => (
-  <NarrowContainer>
+  <NarrowContainer style={{ overflow: 'visible' }}>
     <Space height={86} />
 
     <StyledWrapper>
@@ -81,9 +81,12 @@ const StockPhotosWrapper = styled.div`
   margin-right: 80px;
 
   ${mobile(css`
-    margin-right: 0;
+    margin-right: -${p => p.theme.sideSpace}px;
+    margin-left: -${p => p.theme.sideSpace}px;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    max-width: 100vw;
   `)}
 `
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // Locals
 import { NarrowContainer, Wrapper } from './shared/Containers'
@@ -11,6 +11,7 @@ import { SectionSubtitle } from './shared/SectionSubtitle'
 import { RequestAccess } from './shared/RequestAccess'
 import { TopShare } from './TopShare'
 import { UnderSign } from './shared/UnderSign'
+import { mobile } from './style/mobile'
 
 export const Header = () => (
   <NarrowContainer>

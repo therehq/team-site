@@ -100,10 +100,18 @@ const GrayColorText = styled.span`
 
 const TeamStoryImage = styled.div`
   flex-shrink: 0;
-  width: 567px;
+  width: 100%;
+  max-width: 567px;
   height: 448px;
   background: url(${require('../static/remoteWorker.png')});
   background-size: cover;
+  background-position: center;
+
+  ${mobile(css`
+    width: calc(100% + ${p => p.theme.sideSpace * 2}px);
+    margin-left: -${p => p.theme.sideSpace}px;
+    margin-right: -${p => p.theme.sideSpace}px;
+  `)}
 `
 
 const SectionData = styled.div`

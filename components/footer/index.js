@@ -18,7 +18,7 @@ export const Footer = () => {
   const { setOpenState } = useContext(ModalContext)
 
   return (
-    <NarrowContainer style={{ overflow: 'visible' }}>
+    <NarrowContainer>
       <Space height={172} />
       <StyledWrapper>
         <Column>
@@ -35,7 +35,7 @@ export const Footer = () => {
             <a href="https://angel.co/company/therepm">
               <AngleList />
             </a>
-            <a href="https://dribbble.com/therehq">
+            <a href="https://github.com/therehq">
               <Github />
             </a>
             <a href="https://dribbble.com/morajabi">
@@ -95,6 +95,7 @@ export const Footer = () => {
           </FooterLink>
         </Column>
       </StyledWrapper>
+      <Space height={50} />
     </NarrowContainer>
   )
 }
@@ -193,6 +194,11 @@ const SignWrapper = styled.div`
   z-index: 15;
 
   pointer-events: none;
+
+  ${mobile(css`
+    top: 70px;
+    left: 0;
+  `)}
 `
 
 const SoonWrapper = styled.div`

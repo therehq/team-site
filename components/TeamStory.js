@@ -52,6 +52,12 @@ const SectionImage = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  ${mobile(css`
+    width: calc(100% + ${p => p.theme.sideSpace * 2}px);
+    margin-left: -${p => p.theme.sideSpace}px;
+    margin-right: -${p => p.theme.sideSpace}px;
+  `)}
 `
 
 const SectionImageTitle = styled.span`
@@ -66,10 +72,12 @@ const SectionImageTitle = styled.span`
 `
 
 const TeamStoryImage = styled.div`
-  width: 523px;
+  width: 100%;
+  max-width: 523px;
   height: 387px;
   background: url(${require('../static/team-feed.png')});
   background-size: cover;
+  background-position: center;
 `
 
 const SectionData = styled.div`

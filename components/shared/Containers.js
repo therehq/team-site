@@ -19,10 +19,10 @@ export const Wrapper = styled.div`
 export const NarrowContainer = styled.div`
   max-width: ${p => p.theme.containerNarrowWidth}px;
   margin: 0 auto;
-  overflow-x: hidden;
 
   @media (max-width: ${p => p.theme.containerNarrowWidth}px) {
     padding-left: ${p => p.theme.sideSpace}px;
     padding-right: ${p => p.theme.sideSpace}px;
+    overflow: hidden;
   }
 `
