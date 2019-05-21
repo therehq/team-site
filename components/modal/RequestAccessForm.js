@@ -55,11 +55,13 @@ export const RequestAccessForm = withRouter(
         setCompanyDropdownOpen(true)
       } else {
         setCompanies([])
-        setCompanyDropdownOpen(false)
       }
     }, 60)
 
     const companyBlurred = () => {}
+    const companyFocused = () => {
+      setCompanyDropdownOpen(true)
+    }
 
     return (
       <div>
@@ -114,14 +116,16 @@ export const RequestAccessForm = withRouter(
                           <Input
                             type="text"
                             name="company"
-                            placeholder="Type your company domain..."
+                            placeholder="Type your company name or domain..."
                             onChange={e => {
                               const value = e.currentTarget.value
                               companyValue.current = value
                               setFieldValue('company', value)
+                              setFieldValue('companyLogo', null)
                               triggerCompanyFetch(value)
                             }}
                             onBlur={companyBlurred}
+                            onFocus={companyFocused}
                           />
                           {values.companyLogo && (
                             <CoLogo
@@ -146,14 +150,19 @@ export const RequestAccessForm = withRouter(
                                   }}
                                 >
                                   <CoLogo src={co.logo} />
-                                  {co.name} - {co.domain}
+                                  {co.name}
+                                  <small style={{ marginLeft: 4 }}>
+                                    — {co.domain}{' '}
+                                  </small>
                                 </ResultItem>
                               ))}
-                              <ResultItem
-                                onClick={() => setCompanyDropdownOpen(false)}
-                              >
-                                {values.company}
-                              </ResultItem>
+                              {values.company && values.company.length > 1 && (
+                                <ResultItem
+                                  onClick={() => setCompanyDropdownOpen(false)}
+                                >
+                                  {values.company}
+                                </ResultItem>
+                              )}
                             </Results>
                           )}
                         </AutoCompleteWrapper>
