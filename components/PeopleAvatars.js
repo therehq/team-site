@@ -65,7 +65,7 @@ const Avatars = styled.div`
   display: flex;
   justify-content: space-between;
   width: 702px;
-
+  margin: 0 auto;
   ${mobile(css`
     justify-content: space-around;
     max-width: 100%;

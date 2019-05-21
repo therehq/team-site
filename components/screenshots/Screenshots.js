@@ -143,6 +143,10 @@ const StyledWrapper = styled(Wrapper)`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  ${mobile(css`
+    padding-bottom: 40px;
+  `)}
 `
 
 const SliderWrapper = styled.div`
@@ -240,6 +244,7 @@ const DesktopAppImage = styled.div`
     0px 0px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   opacity: 0;
+  transform: translateY(-15px);
 
   img {
     width: 100%;
@@ -256,7 +261,8 @@ const PosedDesktopAppImage = posed(DesktopAppImage)({
 })
 
 const BgWrapper = styled.div`
-  max-width: 760px;
+  max-width: 750px;
+  margin-left: auto;
   width: 100%;
   height: 100%;
   background: url('../../static/bgSlider.svg') no-repeat;
