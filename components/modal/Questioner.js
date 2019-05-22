@@ -136,9 +136,9 @@ export const Questioner = withRouter(({ router }) => {
         <MessageWrapper>
           <Space height={15} />
 
-          <Title align="center">Thanks for answering last questions </Title>
+          <Title align="center">Thanks for also answering the questions!</Title>
           <Subtitle align="center">
-            There are {620 + 0} people ahead, by sharing you'll get access
+            You can now close this window, or share it with your friends!
           </Subtitle>
           <Space height={20} />
 
