@@ -37,16 +37,16 @@ export class Quotes extends Component {
             title="I've never seen"
             quote="Working with a distributed global team? I've never seen a team pick up an app so fast."
             image={require('../static/avatars/2.jpg')}
-            name="Miko"
-            status="Holger Bartel, Colloq.io"
+            name="Miko Ademagic"
+            status="Finder"
           />
 
           <QuoteBoxMedium
             title="Game changer"
             quote="This is a game changer for remote teams & clients."
             image={require('../static/avatars/3.jpg')}
-            name="Sam"
-            status="Product Manager at Handsome"
+            name="Sam Schak"
+            status="Senior PM at Handsome"
           />
 
           <QuoteBoxMedium
