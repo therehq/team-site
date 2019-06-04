@@ -53,7 +53,6 @@ export const OurCustomers = () => (
         <Invistion />
         <Automatic />
         <Balsamiq />
-        <Stackoverflow />
       </LogoWrapper>
     </BackgroundSlider>
 
