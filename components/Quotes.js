@@ -29,8 +29,8 @@ export class Quotes extends Component {
             title="The idea"
             quote="I really like the idea of There, especially helpful when you’re working with a remote team in different timezones."
             image={require('../static/avatars/1.jpg')}
-            status="Holger Bartel, Colloq.io"
-            name=""
+            name="Holger Bartel"
+            status="Colloq.io"
           />
 
           <QuoteBoxMedium
