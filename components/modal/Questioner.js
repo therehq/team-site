@@ -138,7 +138,8 @@ export const Questioner = withRouter(({ router }) => {
 
           <Title align="center">Thanks for also answering the questions!</Title>
           <Subtitle align="center">
-            You can now close this window, or share it with your friends!
+            You're subscribed! P.S. We're a tiny team of two and bootstrapping,
+            you can really help us by tweeting about us :)
           </Subtitle>
           <Space height={20} />
 
